@@ -1,0 +1,88 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\user\\Cat\u00E1logo Hefesto de Rochas e Minerais Beta\\Assets\\app\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\user\\Cat\u00E1logo Hefesto de Rochas e Minerais Beta\\Assets\\app\\C\u00F3digos (Scripts)\\AbrirSites.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:C\u00F3digos (Scripts)\\AbrirSites.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\user\\Cat\u00E1logo Hefesto de Rochas e Minerais Beta\\Assets\\app\\C\u00F3digos (Scripts)\\AbrirInformacoes.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:C\u00F3digos (Scripts)\\AbrirInformacoes.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\user\\Cat\u00E1logo Hefesto de Rochas e Minerais Beta\\Assets\\app\\C\u00F3digos (Scripts)\\TrocarP\u00E1gina.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:C\u00F3digos (Scripts)\\TrocarP\u00E1gina.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\user\\Cat\u00E1logo Hefesto de Rochas e Minerais Beta\\Assets\\app\\C\u00F3digos (Scripts)\\LeitorDeDados1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:C\u00F3digos (Scripts)\\LeitorDeDados1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 0,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "AbrirSites.cs",
+              "DocumentMoniker": "C:\\Users\\user\\Cat\u00E1logo Hefesto de Rochas e Minerais Beta\\Assets\\app\\C\u00F3digos (Scripts)\\AbrirSites.cs",
+              "RelativeDocumentMoniker": "C\u00F3digos (Scripts)\\AbrirSites.cs",
+              "ToolTip": "C:\\Users\\user\\Cat\u00E1logo Hefesto de Rochas e Minerais Beta\\Assets\\app\\C\u00F3digos (Scripts)\\AbrirSites.cs",
+              "RelativeToolTip": "C\u00F3digos (Scripts)\\AbrirSites.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAgAAAAVAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-06-06T19:59:05.638Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "TrocarP\u00E1gina.cs",
+              "DocumentMoniker": "C:\\Users\\user\\Cat\u00E1logo Hefesto de Rochas e Minerais Beta\\Assets\\app\\C\u00F3digos (Scripts)\\TrocarP\u00E1gina.cs",
+              "RelativeDocumentMoniker": "C\u00F3digos (Scripts)\\TrocarP\u00E1gina.cs",
+              "ToolTip": "C:\\Users\\user\\Cat\u00E1logo Hefesto de Rochas e Minerais Beta\\Assets\\app\\C\u00F3digos (Scripts)\\TrocarP\u00E1gina.cs",
+              "RelativeToolTip": "C\u00F3digos (Scripts)\\TrocarP\u00E1gina.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAA4AAAAVAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-06-06T19:50:32.842Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "AbrirInformacoes.cs",
+              "DocumentMoniker": "C:\\Users\\user\\Cat\u00E1logo Hefesto de Rochas e Minerais Beta\\Assets\\app\\C\u00F3digos (Scripts)\\AbrirInformacoes.cs",
+              "RelativeDocumentMoniker": "C\u00F3digos (Scripts)\\AbrirInformacoes.cs",
+              "ToolTip": "C:\\Users\\user\\Cat\u00E1logo Hefesto de Rochas e Minerais Beta\\Assets\\app\\C\u00F3digos (Scripts)\\AbrirInformacoes.cs",
+              "RelativeToolTip": "C\u00F3digos (Scripts)\\AbrirInformacoes.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAA8AAAAFAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-06-06T19:49:01.13Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "LeitorDeDados1.cs",
+              "DocumentMoniker": "C:\\Users\\user\\Cat\u00E1logo Hefesto de Rochas e Minerais Beta\\Assets\\app\\C\u00F3digos (Scripts)\\LeitorDeDados1.cs",
+              "RelativeDocumentMoniker": "C\u00F3digos (Scripts)\\LeitorDeDados1.cs",
+              "ToolTip": "C:\\Users\\user\\Cat\u00E1logo Hefesto de Rochas e Minerais Beta\\Assets\\app\\C\u00F3digos (Scripts)\\LeitorDeDados1.cs",
+              "RelativeToolTip": "C\u00F3digos (Scripts)\\LeitorDeDados1.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAMUAAABMAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-06-06T19:34:34.279Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

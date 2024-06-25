@@ -1,0 +1,24 @@
+﻿Nome;Tipo;Formula
+Amianto Crisotila;Mineral;Mg<sub>3</sub>(Si<sub>2</sub>O<sub>5</sub>)(OH)<sub>4</sub>
+Apatita;Mineral;Ca<sub>5</sub>(PO<sub>4</sub>)<sub>3</sub>X<sub>2</sub>
+Apofilita;Mineral;KCa<sub>4</sub>Si<sub>8</sub>O<sub>2</sub>0(F,OH).8H<sub>2</sub>O
+Aragonita;Mineral;CaCO<sub>3</sub>
+Berilo Esmeralda em matriz de Xisto;Mineral;Be<sub>3</sub>Al<sub>2</sub>(SiO<sub>3</sub>)<sub>6</sub>
+Berilo variação água-marinha;Mineral;Be<sub>3</sub>Al<sub>2</sub>Si<sub>6</sub>O₁<sub>8</sub>
+Berilo variação esmeralda;Mineral;Be<sub>3</sub>Al<sub>2</sub>(SiO<sub>3</sub>)<sub>6</sub>
+Biotita em matriz de gnaisse;Mineral;"K(Mg,Fe<sub>2</sub>+)<sub>3</sub>[AlSi<sub>3</sub>O10](OH,F)<sub>2</sub>
+K(Mg,Fe<sub>2</sub>+)<sub>3</sub>(Al,Fe<sub>3</sub>+)Si<sub>3</sub>O10(OH,F)<sub>2</sub>"
+Calcedônia variação ágata;Mineral;"SiO<sub>2</sub> "
+Calcita;Mineral;CaCO<sub>3</sub>
+Calcita amarela;Mineral;CaCO<sub>3</sub>
+Calcita Branca;Mineral;CaCO<sub>3</sub>
+Calcita Óptica;Mineral;CaCO<sub>3</sub>
+Calcita variação azul;Mineral;CaCO<sub>3</sub>
+Calcita variação verde;Mineral;CaCO<sub>3</sub>
+Calcopirita e Pirita em Mármore;Mineral;CuFeS<sub>2</sub>
+Cianita variação preta;Mineral;Al<sub>2</sub>SiO<sub>5</sub>
+Cianita variação verde;Mineral;Al<sub>2</sub>SiO<sub>5</sub>
+Citrino;Mineral;SiO<sub>2</sub>
+Corindon variação Rubi;Mineral;Al<sub>2</sub>O<sub>3</sub>
+Drusa de quartzo;Mineral;SiO<sub>2</sub>
+Enxofre;Mineral;S ou S<sub>8</sub>
