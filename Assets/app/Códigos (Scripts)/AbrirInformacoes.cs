@@ -14,6 +14,9 @@ public class AbrirInformacoes : MonoBehaviour
     public GameObject botaoAcesso;
     public GameObject itemPai;
 
+    // Colocar uma referência vinda do LeitorDeDados aqui
+    public GameObject abaDosMinerais;
+
     private static LeitorDeDados1 scriptLerDados;
     private GameObject cameraMinerais;
     private Dictionary<string, int> indices;
@@ -34,6 +37,8 @@ public class AbrirInformacoes : MonoBehaviour
 
     void Abrir()
     {
+        // abaDosMinerais.SetActive(true);
+
         // Define uma lista de componentes para editá-los.
         TextMeshProUGUI[] textos = scriptLerDados.minInformacoes.GetComponentsInChildren<TextMeshProUGUI>();
         Debug.Log(textos.Length);
