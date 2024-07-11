@@ -15,21 +15,22 @@ public class AbrirInformacoes : MonoBehaviour
     public GameObject itemPai;
 
     // Colocar uma referência vinda do LeitorDeDados aqui
-    public GameObject abaDosMinerais;
 
     private static LeitorDeDados1 scriptLerDados;
     private GameObject cameraMinerais;
     private Dictionary<string, int> indices;
     private LeitorDeDados1.ListaDeMinerais ListaMinerais;
+    private GameObject abaMinerais;
 
     // Start is called before the first frame update
     void Start()
     {
         LeitorDeDados = GameObject.Find("LeitorDeDados");
         scriptLerDados = LeitorDeDados.GetComponent<LeitorDeDados1>();
-        cameraMinerais = scriptLerDados.cameraMin;
+        cameraMinerais = scriptLerDados.cameraMain;
         indices = scriptLerDados.indicesRochasMinerais;
         ListaMinerais = scriptLerDados.ListaMinerais;
+        abaMinerais = scriptLerDados.abaMinerais;
         // Adiciona a interatividade de clique.
         Button abrirPagina = botaoAcesso.GetComponent<Button>();
         abrirPagina.onClick.AddListener(Abrir);
@@ -37,7 +38,7 @@ public class AbrirInformacoes : MonoBehaviour
 
     void Abrir()
     {
-        // abaDosMinerais.SetActive(true);
+        abaMinerais.SetActive(true);
 
         // Define uma lista de componentes para editá-los.
         TextMeshProUGUI[] textos = scriptLerDados.minInformacoes.GetComponentsInChildren<TextMeshProUGUI>();
