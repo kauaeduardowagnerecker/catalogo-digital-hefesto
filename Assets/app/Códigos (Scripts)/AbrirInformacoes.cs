@@ -25,12 +25,15 @@ public class AbrirInformacoes : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        // Extrai alguns dos GameObjects necessários.
         LeitorDeDados = GameObject.Find("LeitorDeDados");
+        // Remover esse find utilizando setagem dinâmica de variáveis
         scriptLerDados = LeitorDeDados.GetComponent<LeitorDeDados1>();
         cameraMinerais = scriptLerDados.cameraMain;
         indices = scriptLerDados.indicesRochasMinerais;
         ListaMinerais = scriptLerDados.ListaMinerais;
         abaMinerais = scriptLerDados.abaMinerais;
+
         // Adiciona a interatividade de clique.
         Button abrirPagina = botaoAcesso.GetComponent<Button>();
         abrirPagina.onClick.AddListener(Abrir);

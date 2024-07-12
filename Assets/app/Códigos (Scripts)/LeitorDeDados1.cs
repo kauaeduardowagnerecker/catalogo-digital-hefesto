@@ -48,6 +48,8 @@ public class LeitorDeDados1 : MonoBehaviour
 
     public Dictionary<string, int> indicesRochasMinerais = new Dictionary<string, int>();
 
+    public Dictionary<string, string> tiposRochasMinerais = new Dictionary<string, string>();
+
     /* As linhas seguintes criam objetos especiais específicos para o aplicativo através de classes. Em geral, 
      * as classes são um ''grupo'' de objetos similares. Nesse caso, agrupamos as rochas em uma única classe,
      * pois todas elas tem propriedades semelhantes.
@@ -341,12 +343,12 @@ public class LeitorDeDados1 : MonoBehaviour
 
             Transform tipo = item1.transform.GetChild(2);
             TextMeshProUGUI textoTipo = tipo.GetComponent<TextMeshProUGUI>();
-            
-            Transform formula = item1.transform.GetChild(3);
-            TextMeshProUGUI textoFormula = formula.GetComponent<TextMeshProUGUI>();
 
-            Transform foto = item1.transform.GetChild(4);
+            Transform foto = item1.transform.GetChild(3);
             Image componenteImagemFoto = foto.GetComponent<Image>();
+
+            Transform botaoAbertura = item1.transform.GetChild(4);
+            AbrirInformacoes scriptAbertura = botaoAbertura.GetComponent<AbrirInformacoes>();
 
             RectTransform retanguloItem = item1.GetComponent<RectTransform>();
             retanguloItem.localPosition = new Vector2(272.775f, (-z * 230)-114.5f);
@@ -357,7 +359,6 @@ public class LeitorDeDados1 : MonoBehaviour
 
             textoNome.SetText(ListaMinerais.catalogoMinerais[z].nomeTecnico);
             textoTipo.SetText(ListaMinerais.catalogoMinerais[z].tipo);
-            textoFormula.SetText(ListaMinerais.catalogoMinerais[z].formula);
             componenteImagemFoto.sprite = Resources.Load<Sprite>("Amianto Crisotila");
 
             // Descobrir se é possível carregar imagens dinamicamente. (sim, falta implementar) (deixar pra depois)
