@@ -3159,14 +3159,20 @@ MonoBehaviour:
   prefabMinerais: {fileID: 972008715526736190, guid: 8ca0540d889d5234da5f3ea337248259, type: 3}
   minInformacoes: {fileID: 484090730}
   dadosIgneas: {fileID: 4900000, guid: 7ad25b9ce5e624240b4df0546cdd4cda, type: 3}
+  abaIgneas: {fileID: 0}
   num_colunasIgneas: 15
   prefabIgneas: {fileID: 47191275048729370, guid: c92c597c03e43b14aa94997139d0af46, type: 3}
+  igneasInformacoes: {fileID: 0}
   dadosMetamorficas: {fileID: 4900000, guid: 89a966b99bb5e3349a0f40208832bec5, type: 3}
   num_colunasMetamorficas: 14
   prefabMetamorficas: {fileID: 1843621075756907097, guid: cf54538d94a348b4d8b40c981d4cb98b, type: 3}
   dadosSedimentares: {fileID: 4900000, guid: 8126ba4e8369ce6498e94a487a3521cb, type: 3}
   num_colunasSedimentares: 15
   prefabSedimentares: {fileID: 5660592384092071620, guid: 4394da91e1a572b4dbf49a5c40146772, type: 3}
+  hyperlinkUSPGeoIgneas: {fileID: 0}
+  hyperlinkMuseuHEIgneas: {fileID: 0}
+  hyperlinkWikipediaIgneas: {fileID: 0}
+  hyperlinkOutrosIgneas: {fileID: 0}
   ListaMinerais:
     catalogoMinerais: []
   ListaIgneas:
@@ -5766,8 +5772,8 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1723605753}
   m_HandleRect: {fileID: 1723605752}
   m_Direction: 3
-  m_Value: 0
-  m_Size: 1
+  m_Value: 1
+  m_Size: 0.14314893
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -10975,7 +10981,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6918943493918511949, guid: 09b793422bf4eae42aac2b463f0eba71, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -276
+      value: 3265
       objectReference: {fileID: 0}
     - target: {fileID: 6918943493918511949, guid: 09b793422bf4eae42aac2b463f0eba71, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -11710,7 +11716,7 @@ GameObject:
   - component: {fileID: 1700097681}
   - component: {fileID: 1700097683}
   m_Layer: 5
-  m_Name: TextoMinMicro
+  m_Name: TextoUSPGeo
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -13961,7 +13967,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: -0.00000013969839, y: 0.00012207031}
-  m_SizeDelta: {x: 0, y: 300}
+  m_SizeDelta: {x: 0, y: 7397.96}
   m_Pivot: {x: 0, y: 1}
 --- !u!1 &1969771219
 GameObject:

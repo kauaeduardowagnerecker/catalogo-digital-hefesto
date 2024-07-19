@@ -17,22 +17,37 @@ public class AbrirInformacoes : MonoBehaviour
     // Colocar uma referência vinda do LeitorDeDados aqui
 
     private static LeitorDeDados1 scriptLerDados;
-    private GameObject cameraMinerais;
+    private GameObject cameraPrincipal;
     private Dictionary<string, int> indices;
+    private Dictionary<string, string> tipos;
     private LeitorDeDados1.ListaDeMinerais ListaMinerais;
+    private LeitorDeDados1.ListaDeIgneas ListaIgneas;
     private GameObject abaMinerais;
+    private GameObject abaIgneas;
 
     // Start is called before the first frame update
     void Start()
     {
-        // Extrai alguns dos GameObjects necessários.
         LeitorDeDados = GameObject.Find("LeitorDeDados");
         // Remover esse find utilizando setagem dinâmica de variáveis
+
+        // Referências essenciais.
         scriptLerDados = LeitorDeDados.GetComponent<LeitorDeDados1>();
-        cameraMinerais = scriptLerDados.cameraMain;
+
+        // Camera
+        cameraPrincipal = scriptLerDados.cameraMain;
+
+        // Dicionários
         indices = scriptLerDados.indicesRochasMinerais;
+        tipos = scriptLerDados.tiposRochasMinerais;
+
+        // Itens dos minerais
         ListaMinerais = scriptLerDados.ListaMinerais;
         abaMinerais = scriptLerDados.abaMinerais;
+
+        // Itens das ígneas
+        ListaIgneas = scriptLerDados.ListaIgneas;
+        abaIgneas = scriptLerDados.abaIgneas;
 
         // Adiciona a interatividade de clique.
         Button abrirPagina = botaoAcesso.GetComponent<Button>();
@@ -41,11 +56,25 @@ public class AbrirInformacoes : MonoBehaviour
 
     void Abrir()
     {
-        abaMinerais.SetActive(true);
+        string type = tipos[itemPai.name];
+        TextMeshProUGUI[] textos;
+        int indice;
+
+        switch (type)
+        {
+            case "Mineral": 
+                abaMinerais.SetActive(true);
+                textos = scriptLerDados.minInformacoes.GetComponentsInChildren<TextMeshProUGUI>();
+                indice = indices[itemPai.name];
+
+                break;
+            case "Ígnea":
+                abaIgneas.SetActive(true);
+                textos = scriptLerDados.igneasInformacoes.GetComponentsInChildren<TextMeshProUGUI>();
+                break;
+        }
 
         // Define uma lista de componentes para editá-los.
-        TextMeshProUGUI[] textos = scriptLerDados.minInformacoes.GetComponentsInChildren<TextMeshProUGUI>();
-        Debug.Log(textos.Length);
         // Guarda o índice do mineral, através do nome do GameObject e do dicionário indicesRochasMinerais.
         int indice = indices[itemPai.name];
 
@@ -73,6 +102,6 @@ public class AbrirInformacoes : MonoBehaviour
         textos[40].text = ListaMinerais.catalogoMinerais[indice].habito;
         textos[42].text = ListaMinerais.catalogoMinerais[indice].classeCristalina;
 
-        cameraMinerais.transform.localPosition = new Vector3(-1503, cameraMinerais.transform.localPosition.y, cameraMinerais.transform.localPosition.z);
+        cameraPrincipal.transform.localPosition = new Vector3(-1503, cameraPrincipal.transform.localPosition.y, cameraPrincipal.transform.localPosition.z);
     }
 }

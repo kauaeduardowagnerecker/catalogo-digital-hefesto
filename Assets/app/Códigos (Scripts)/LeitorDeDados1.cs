@@ -23,10 +23,10 @@ public class LeitorDeDados1 : MonoBehaviour
     public GameObject minInformacoes;
 
     public TextAsset dadosIgneas;
-    //public GameObject abaIgneas;
+    public GameObject abaIgneas;
     public int num_colunasIgneas;
     public GameObject prefabIgneas;
-    //public GameObject igneasInformacoes;
+    public GameObject igneasInformacoes;
 
     public TextAsset dadosMetamorficas;
     //public GameObject abaMetamorficas;
@@ -49,6 +49,13 @@ public class LeitorDeDados1 : MonoBehaviour
     public Dictionary<string, int> indicesRochasMinerais = new Dictionary<string, int>();
 
     public Dictionary<string, string> tiposRochasMinerais = new Dictionary<string, string>();
+
+    // Cria referências necessárias para outros scripts (abertura de links de referência das ígneas).
+    
+    public GameObject hyperlinkUSPGeoIgneas;
+    public GameObject hyperlinkMuseuHEIgneas;
+    public GameObject hyperlinkWikipediaIgneas;
+    public GameObject hyperlinkOutrosIgneas;
 
     /* As linhas seguintes criam objetos especiais específicos para o aplicativo através de classes. Em geral, 
      * as classes são um ''grupo'' de objetos similares. Nesse caso, agrupamos as rochas em uma única classe,
@@ -255,6 +262,7 @@ public class LeitorDeDados1 : MonoBehaviour
 
             Debug.Log(i + ListaMinerais.catalogoMinerais[i].nomeTecnico);
             indicesRochasMinerais.Add(ListaMinerais.catalogoMinerais[i].nomeTecnico, i);
+            tiposRochasMinerais.Add(ListaMinerais.catalogoMinerais[i].nomeTecnico, "Mineral");
         }
 
         // Preenchendo as informações de rochas ígneas.
@@ -276,6 +284,9 @@ public class LeitorDeDados1 : MonoBehaviour
             ListaIgneas.catalogoIgneas[i].uspgeociencias = listaDeDadosIgneas[num_colunasIgneas * (i + 1) + 11];
             ListaIgneas.catalogoIgneas[i].wikipedia = listaDeDadosIgneas[num_colunasIgneas * (i + 1) + 12];
             ListaIgneas.catalogoIgneas[i].outro = listaDeDadosIgneas[num_colunasIgneas * (i + 1) + 13];
+
+            indicesRochasMinerais.Add(ListaIgneas.catalogoIgneas[i].nomeTecnico, i);
+            tiposRochasMinerais.Add(ListaIgneas.catalogoIgneas[i].nomeTecnico, "Ígnea");
         }
 
         // Preenchendo as informações de rochas metamórficas.
@@ -297,6 +308,9 @@ public class LeitorDeDados1 : MonoBehaviour
             ListaMetamorficas.catalogoMetamorficas[i].uspgeociencias = listaDeDadosMetamorficas[num_colunasMetamorficas * (i + 1) + 11];
             ListaMetamorficas.catalogoMetamorficas[i].wikipedia = listaDeDadosMetamorficas[num_colunasMetamorficas * (i + 1) + 12];
             ListaMetamorficas.catalogoMetamorficas[i].outro = listaDeDadosMetamorficas[num_colunasMetamorficas * (i + 1) + 13];
+
+            indicesRochasMinerais.Add(ListaMetamorficas.catalogoMetamorficas[i].nomeTecnico, i);
+            tiposRochasMinerais.Add(ListaMetamorficas.catalogoMetamorficas[i].nomeTecnico, "Metamórfica");
         }
 
         // Preenchendo as informações de rochas sedimentares.
@@ -319,6 +333,9 @@ public class LeitorDeDados1 : MonoBehaviour
             ListaSedimentares.catalogoSedimentares[i].uspgeociencias = listaDeDadosSedimentares[num_colunasSedimentares * (i + 1) + 12];
             ListaSedimentares.catalogoSedimentares[i].wikipedia = listaDeDadosSedimentares[num_colunasSedimentares * (i + 1) + 13];
             ListaSedimentares.catalogoSedimentares[i].outro = listaDeDadosSedimentares[num_colunasSedimentares * (i + 1) + 14];
+
+            indicesRochasMinerais.Add(ListaSedimentares.catalogoSedimentares[i].nomeTecnico, i);
+            tiposRochasMinerais.Add(ListaSedimentares.catalogoSedimentares[i].nomeTecnico, "Sedimentar");
         }
 
         // Ajustando o tamanho do ScrolLView (Content).

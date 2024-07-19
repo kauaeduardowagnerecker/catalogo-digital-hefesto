@@ -8,24 +8,16 @@ public class AbrirSitesReferencias : MonoBehaviour
     // URL do website para redirecionar
     public string url;
 
-    // Referência ao ícone
-    public Button ícone;
+    // Referência ao link
+    public GameObject textoHyperlink;
 
     void Start()
     {
         // Obtém o componente Button anexado ao GameObject
-        Button botao = ícone.GetComponent<Button>();
+        Button botao = textoHyperlink.GetComponent<Button>();
 
-        // Verifica se o componente Button está presente
-        if (botao != null)
-        {
-            // Adiciona o listener ao botão para detectar o clique
-            botao.onClick.AddListener(OpenURLReferencias);
-        }
-        else
-        {
-            Debug.LogError("O componente Button não está presente no GameObject.");
-        }
+        // Adiciona o listener ao botão para detectar o clique
+        botao.onClick.AddListener(OpenURLReferencias);
     }
 
     // Método para abrir o URL
