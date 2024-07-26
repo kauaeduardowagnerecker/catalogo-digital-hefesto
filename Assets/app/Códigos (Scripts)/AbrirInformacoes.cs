@@ -1,5 +1,6 @@
 using JetBrains.Annotations;
 using System.Collections;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Xml;
@@ -26,10 +27,13 @@ public class AbrirInformacoes : MonoBehaviour
     private Dictionary<string, string> tipos;
     private LeitorDeDados1.ListaDeMinerais ListaMinerais;
     private LeitorDeDados1.ListaDeIgneas ListaIgneas;
+    private LeitorDeDados1.ListaDeSedimentares ListaSedimentares;
     private GameObject abaMinerais;
     private GameObject abaIgneas;
+    private GameObject abaSedimentares;
     private GameObject contentMinerais;
     private GameObject contentIgneas;
+    private GameObject contentSedimentares;
 
     // Start is called before the first frame update
     void Start()
@@ -56,6 +60,11 @@ public class AbrirInformacoes : MonoBehaviour
         ListaIgneas = scriptLerDados.ListaIgneas;
         abaIgneas = scriptLerDados.abaIgneas;
         contentIgneas = scriptLerDados.igneasContent;
+
+        // Itens das sedimentares
+        ListaSedimentares = scriptLerDados.ListaSedimentares;
+        abaSedimentares = scriptLerDados.abaSedimentares;
+        contentSedimentares = scriptLerDados.sedimentaresContent;
 
         // Adiciona a interatividade de clique.
         Button abrirPagina = botaoAcesso.GetComponent<Button>();
@@ -166,26 +175,91 @@ public class AbrirInformacoes : MonoBehaviour
                     }
                 }
 
-                AdjustSizeScrollview(contentIgneas, scriptLerDados.prefabIgneas);
+                StartCoroutine(DelayedAdjustment(scriptLerDados.igneasInformacoes, contentIgneas));
                 cameraPrincipal.transform.localPosition = new Vector3(-2940f, cameraPrincipal.transform.localPosition.y, cameraPrincipal.transform.localPosition.z);
                 break;
+
+            case "Sedimentar":
+
+                abaSedimentares.SetActive(true);
+                textos = scriptLerDados.sedimentaresInformacoes.GetComponentsInChildren<TextMeshProUGUI>();
+                indice = indices[itemPai.name];
+                var rochaSedimentar = ListaSedimentares.catalogoSedimentares[indice];
+
+                textos[0].text = rochaSedimentar.nomeTecnico;
+                textos[1].text = rochaSedimentar.tipo;
+                textos[4].text = rochaSedimentar.nomeTecnico;
+                textos[6].text = rochaSedimentar.tambemConhecidoPor;
+                textos[8].text = rochaSedimentar.tipo;
+                textos[10].text = rochaSedimentar.familia;
+                textos[12].text = rochaSedimentar.sedimentosOriginarios;
+                textos[15].text = rochaSedimentar.texturas;
+                textos[17].text = rochaSedimentar.mineraisEssenciais;
+                textos[19].text = rochaSedimentar.mineraisAcessorios;
+                textos[21].text = rochaSedimentar.comoForma;
+                textos[23].text = rochaSedimentar.rochaCotidiano;
+                textos[25].text = rochaSedimentar.curiosidades;
+                textos[27].text = rochaSedimentar.doacao;
+                textos[30].text = rochaSedimentar.museuhe;
+                textos[32].text = rochaSedimentar.uspgeociencias;
+                textos[34].text = rochaSedimentar.wikipedia;
+                textos[36].text = rochaSedimentar.outro;
+                textos[37].text = rochaSedimentar.outro2;
+
+                for (int i = 30; i <= 36; i = i + 2)
+                {
+                    if (textos[i].text == "-")
+                    {
+                        textos[i].color = new Color(7f, 0f, 0f, 255f);
+                        textos[i].fontStyle = FontStyles.Normal;
+                    }
+                    else
+                    {
+                        textos[i].color = Color.blue;
+                        textos[i].fontStyle = FontStyles.Underline;
+                    }
+                }
+
+                if (textos[37].text == "-")
+                {
+                    textos[37].color = new Color(7f, 0f, 0f, 255f);
+                    textos[37].fontStyle = FontStyles.Normal;
+                }
+                else
+                {
+                    textos[37].color = Color.blue;
+                    textos[37].fontStyle = FontStyles.Underline;
+                }
+
+                AjustarTextos(scriptLerDados.sedimentaresInformacoes);
+                AdjustSizeScrollview(contentSedimentares, scriptLerDados.sedimentaresInformacoes);
+                cameraPrincipal.transform.position = new Vector3(-4420f, cameraPrincipal.transform.position.y, cameraPrincipal.transform.position.z);
+                break;
         }
+    }
+
+     IEnumerator DelayedAdjustment(GameObject informacoes, GameObject content)
+    {
+        // Wait for the end of the frame to ensure all UI updates are completed
+        yield return new WaitForEndOfFrame();
+        yield return new WaitForEndOfFrame();
+        AjustarTextos(informacoes);
+        AdjustSizeScrollview(content, informacoes);
     }
 
     void AdjustSizeScrollview(GameObject content, GameObject modelo)
     {
         int index = 0;
-        string type = tipos[itemPai.name];
 
         index = modelo.transform.childCount - 1;
 
         RectTransform contentRect = content.GetComponent<RectTransform>();
-        float top = contentRect.localPosition.y;
+        float top = contentRect.localPosition.y + (contentRect.rect.height/2);
 
         Transform ultimoObjetoModelo = modelo.transform.GetChild(index);
         float bottom = ultimoObjetoModelo.localPosition.y;
 
-        float distance = top - bottom;
+        float distance = Math.Abs(top - bottom);
 
         contentRect.sizeDelta = new Vector2(contentRect.sizeDelta.x, distance);
 
@@ -220,8 +294,7 @@ public class AbrirInformacoes : MonoBehaviour
             float larguraAtual = objetoAtual.rect.width;
 
             float posiçãoNovaY = posiçãoAnteriorY - (alturaAnterior / 2) - espacamentoVertical - (alturaAtual/2);
-            float posiçãoNovaX = (larguraAtual / 2) - 199.41f;
-            objetoAtual.localPosition = new Vector3(posiçãoNovaX, posiçãoNovaY, posiçãoAtual.z);
+            objetoAtual.localPosition = new Vector3(posiçãoAtual.x, posiçãoNovaY, posiçãoAtual.z);
         }
     }
 
@@ -234,7 +307,7 @@ public class AbrirInformacoes : MonoBehaviour
 
             textoReal.ForceMeshUpdate();
 
-            Vector2 textSize = textoReal.GetRenderedValues(false);
+            Vector2 textSize = textoReal.GetRenderedValues(true);
             
             text.sizeDelta = new Vector2(text.sizeDelta.x, textSize.y);
         }

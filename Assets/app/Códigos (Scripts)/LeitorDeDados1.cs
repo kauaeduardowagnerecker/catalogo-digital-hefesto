@@ -37,10 +37,11 @@ public class LeitorDeDados1 : MonoBehaviour
     //public GameObject metamorficasInformacoes;
 
     public TextAsset dadosSedimentares;
-    //public GameObject abaSedimentares;
+    public GameObject abaSedimentares;
     public int num_colunasSedimentares;
     public GameObject prefabSedimentares;
-    //public GameObject sedimentaresInformacoes;
+    public GameObject sedimentaresInformacoes;
+    public GameObject sedimentaresContent;
 
     /* A linha seguinte cria uma estrutura chamada dicionário, que cria uma associação entre um valor "chave"
      * e um valor a ser retirado por essa "chave". Nesse caso, utilizamos ela no código de leitura de dadosMinerais
@@ -91,10 +92,9 @@ public class LeitorDeDados1 : MonoBehaviour
         public string nomeFotoAplicacoes;
         public string nomeTecnico;
         public string tipo;
-        public string classificacao;
         public string tambemConhecidoPor;
-        public string variedades;
         public string sedimentosOriginarios;
+        public string familia;
         public string comoForma;
         public string texturas;
         public string mineraisEssenciais;
@@ -106,6 +106,7 @@ public class LeitorDeDados1 : MonoBehaviour
         public string uspgeociencias;
         public string wikipedia;
         public string outro;
+        public string outro2;
         // Classificação = bio, quimio, clast, org
     }
 
@@ -316,18 +317,20 @@ public class LeitorDeDados1 : MonoBehaviour
             ListaSedimentares.catalogoSedimentares[i].nomeTecnico = listaDeDadosSedimentares[num_colunasSedimentares * (i + 1)];
             ListaSedimentares.catalogoSedimentares[i].tipo = listaDeDadosSedimentares[num_colunasSedimentares * (i + 1) + 1];
             ListaSedimentares.catalogoSedimentares[i].tambemConhecidoPor = listaDeDadosSedimentares[num_colunasSedimentares * (i + 1) + 2];
-            ListaSedimentares.catalogoSedimentares[i].sedimentosOriginarios = listaDeDadosSedimentares[num_colunasSedimentares * (i + 1) + 3];
-            ListaSedimentares.catalogoSedimentares[i].comoForma = listaDeDadosSedimentares[num_colunasSedimentares * (i + 1) + 4];
-            ListaSedimentares.catalogoSedimentares[i].texturas = listaDeDadosSedimentares[num_colunasSedimentares * (i + 1) + 5];
-            ListaSedimentares.catalogoSedimentares[i].mineraisEssenciais = listaDeDadosSedimentares[num_colunasSedimentares * (i + 1) + 6];
-            ListaSedimentares.catalogoSedimentares[i].mineraisAcessorios = listaDeDadosSedimentares[num_colunasSedimentares * (i + 1) + 7];
-            ListaSedimentares.catalogoSedimentares[i].rochaCotidiano = listaDeDadosSedimentares[num_colunasSedimentares * (i + 1) + 8];
-            ListaSedimentares.catalogoSedimentares[i].curiosidades = listaDeDadosSedimentares[num_colunasSedimentares * (i + 1) + 9];
-            ListaSedimentares.catalogoSedimentares[i].doacao = listaDeDadosSedimentares[num_colunasSedimentares * (i + 1) + 10];
-            ListaSedimentares.catalogoSedimentares[i].museuhe = listaDeDadosSedimentares[num_colunasSedimentares * (i + 1) + 11];
-            ListaSedimentares.catalogoSedimentares[i].uspgeociencias = listaDeDadosSedimentares[num_colunasSedimentares * (i + 1) + 12];
-            ListaSedimentares.catalogoSedimentares[i].wikipedia = listaDeDadosSedimentares[num_colunasSedimentares * (i + 1) + 13];
-            ListaSedimentares.catalogoSedimentares[i].outro = listaDeDadosSedimentares[num_colunasSedimentares * (i + 1) + 14];
+            ListaSedimentares.catalogoSedimentares[i].familia = listaDeDadosSedimentares[num_colunasSedimentares * (i + 1) + 3];
+            ListaSedimentares.catalogoSedimentares[i].sedimentosOriginarios = listaDeDadosSedimentares[num_colunasSedimentares * (i + 1) + 4];
+            ListaSedimentares.catalogoSedimentares[i].comoForma = listaDeDadosSedimentares[num_colunasSedimentares * (i + 1) + 5];
+            ListaSedimentares.catalogoSedimentares[i].texturas = listaDeDadosSedimentares[num_colunasSedimentares * (i + 1) + 6];
+            ListaSedimentares.catalogoSedimentares[i].mineraisEssenciais = listaDeDadosSedimentares[num_colunasSedimentares * (i + 1) + 7];
+            ListaSedimentares.catalogoSedimentares[i].mineraisAcessorios = listaDeDadosSedimentares[num_colunasSedimentares * (i + 1) + 8];
+            ListaSedimentares.catalogoSedimentares[i].rochaCotidiano = listaDeDadosSedimentares[num_colunasSedimentares * (i + 1) + 9];
+            ListaSedimentares.catalogoSedimentares[i].curiosidades = listaDeDadosSedimentares[num_colunasSedimentares * (i + 1) + 10];
+            ListaSedimentares.catalogoSedimentares[i].doacao = listaDeDadosSedimentares[num_colunasSedimentares * (i + 1) + 11];
+            ListaSedimentares.catalogoSedimentares[i].museuhe = listaDeDadosSedimentares[num_colunasSedimentares * (i + 1) + 12];
+            ListaSedimentares.catalogoSedimentares[i].uspgeociencias = listaDeDadosSedimentares[num_colunasSedimentares * (i + 1) + 13];
+            ListaSedimentares.catalogoSedimentares[i].wikipedia = listaDeDadosSedimentares[num_colunasSedimentares * (i + 1) + 14];
+            ListaSedimentares.catalogoSedimentares[i].outro = listaDeDadosSedimentares[num_colunasSedimentares * (i + 1) + 15];
+            ListaSedimentares.catalogoSedimentares[i].outro2 = listaDeDadosSedimentares[num_colunasSedimentares * (i + 1) + 16];
 
             indicesRochasMinerais.Add(ListaSedimentares.catalogoSedimentares[i].nomeTecnico, i);
             tiposRochasMinerais.Add(ListaSedimentares.catalogoSedimentares[i].nomeTecnico, "Sedimentar");
