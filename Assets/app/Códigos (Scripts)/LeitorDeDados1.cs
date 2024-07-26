@@ -21,12 +21,14 @@ public class LeitorDeDados1 : MonoBehaviour
     public int num_colunasMinerais;
     public GameObject prefabMinerais;
     public GameObject minInformacoes;
+    public GameObject minContent;
 
     public TextAsset dadosIgneas;
     public GameObject abaIgneas;
     public int num_colunasIgneas;
     public GameObject prefabIgneas;
     public GameObject igneasInformacoes;
+    public GameObject igneasContent;
 
     public TextAsset dadosMetamorficas;
     //public GameObject abaMetamorficas;
@@ -49,13 +51,6 @@ public class LeitorDeDados1 : MonoBehaviour
     public Dictionary<string, int> indicesRochasMinerais = new Dictionary<string, int>();
 
     public Dictionary<string, string> tiposRochasMinerais = new Dictionary<string, string>();
-
-    // Cria referências necessárias para outros scripts (abertura de links de referência das ígneas).
-    
-    public GameObject hyperlinkUSPGeoIgneas;
-    public GameObject hyperlinkMuseuHEIgneas;
-    public GameObject hyperlinkWikipediaIgneas;
-    public GameObject hyperlinkOutrosIgneas;
 
     /* As linhas seguintes criam objetos especiais específicos para o aplicativo através de classes. Em geral, 
      * as classes são um ''grupo'' de objetos similares. Nesse caso, agrupamos as rochas em uma única classe,
@@ -338,7 +333,7 @@ public class LeitorDeDados1 : MonoBehaviour
             tiposRochasMinerais.Add(ListaSedimentares.catalogoSedimentares[i].nomeTecnico, "Sedimentar");
         }
 
-        // Ajustando o tamanho do ScrolLView (Content).
+        // Ajustando o tamanho do ScrollView (Content).
         RectTransform tamanhoDaLista = containerDosItens.GetComponent<RectTransform>();
         float tamanhoEscalonado = 235f * (tamanhoDaTabelaMinerais + tamanhoDaTabelaMetamorficas + tamanhoDaTabelaIgneas + tamanhoDaTabelaSedimentares);
         tamanhoDaLista.sizeDelta = new Vector2(tamanhoDaLista.sizeDelta.x, tamanhoEscalonado);

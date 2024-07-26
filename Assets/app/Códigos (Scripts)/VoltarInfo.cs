@@ -7,7 +7,7 @@ public class VoltarInfo : MonoBehaviour
 {
     public Button botaoVoltar;
     public Camera cameraMinerais;
-    public GameObject abaDosMinerais;
+    public GameObject aba;
 
     void Start()
     {
@@ -16,7 +16,7 @@ public class VoltarInfo : MonoBehaviour
 
     void Voltar()
     {
-        abaDosMinerais.SetActive(false);
-        cameraMinerais.transform.localPosition = new Vector3(0, cameraMinerais.transform.localPosition.y, cameraMinerais.transform.localPosition.z);
+        aba.SetActive(false);
+        cameraMinerais.transform.localPosition = new Vector3(0f, cameraMinerais.transform.localPosition.y, cameraMinerais.transform.localPosition.z);
     }
 }
