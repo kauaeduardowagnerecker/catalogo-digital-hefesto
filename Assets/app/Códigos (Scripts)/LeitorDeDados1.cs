@@ -1,12 +1,15 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using TMPro;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
+using static UnityEditor.Progress;
 
 public class LeitorDeDados1 : MonoBehaviour
 {
-    /* Inicializa as variáveis necessárias apra o funcionamento do código.
+    /* Inicializa as variáveis necessárias para o funcionamento do código.
      * dadosMinerais se refere ao arquivo .csv da planilha do Catálogo de Rochas e Minerais, convertido através de 
      * websites ou outras ferramentas para ser delimitado por colunas.
      * num_colunasMinerais é o número de colunas da planilha em questão.
@@ -31,10 +34,11 @@ public class LeitorDeDados1 : MonoBehaviour
     public GameObject igneasContent;
 
     public TextAsset dadosMetamorficas;
-    //public GameObject abaMetamorficas;
+    public GameObject abaMetamorficas;
     public int num_colunasMetamorficas;
     public GameObject prefabMetamorficas;
-    //public GameObject metamorficasInformacoes;
+    public GameObject metamorficasInformacoes;
+    public GameObject metamorficasContent;
 
     public TextAsset dadosSedimentares;
     public GameObject abaSedimentares;
@@ -53,6 +57,16 @@ public class LeitorDeDados1 : MonoBehaviour
 
     public Dictionary<string, string> tiposRochasMinerais = new Dictionary<string, string>();
 
+    public Dictionary<string, RectTransform> botoesRochasMinerais = new Dictionary<string, RectTransform>();
+
+    public Dictionary<string, bool> botaoRenderizado = new Dictionary<string, bool>();
+
+    public Dictionary<string, GameObject> botaoDictGameObjectRochasMinerais = new Dictionary<string, GameObject>();
+
+    public List<string> listaDeNomesDeRochasEMinerais;
+    public List<string> listaDeNomesBotoesRenderizados;
+
+
     /* As linhas seguintes criam objetos especiais específicos para o aplicativo através de classes. Em geral, 
      * as classes são um ''grupo'' de objetos similares. Nesse caso, agrupamos as rochas em uma única classe,
      * pois todas elas tem propriedades semelhantes.
@@ -64,9 +78,7 @@ public class LeitorDeDados1 : MonoBehaviour
         public string nomeFoto;
         public string nomeFotoAplicacoes;
         public string nomeTecnico;
-        public string classificacao;
         public string tambemConhecidoPor;
-        public string variedades;
         public string variacao;
         public string familia;
         public string tipoEGrau;
@@ -81,6 +93,7 @@ public class LeitorDeDados1 : MonoBehaviour
         public string museuhe;
         public string uspgeociencias;
         public string wikipedia;
+        public string museuUnesp;
         public string outro;
         // Classificação = bio, quimio, clast, org
     }
@@ -118,8 +131,8 @@ public class LeitorDeDados1 : MonoBehaviour
         public string nomeTecnico;
         public string tipo;
         public string variacao;
+        public string correspondenteExtrusivoIntrusivo;
         public string tambemConhecidoPor;
-        public string variedades;
         public string familia;
         public string magmaOriginario;
         public string comoForma;
@@ -130,8 +143,6 @@ public class LeitorDeDados1 : MonoBehaviour
         public string uspgeociencias;
         public string wikipedia;
         public string outro;
-
-        // ordenar
     }
 
     [System.Serializable]
@@ -227,113 +238,119 @@ public class LeitorDeDados1 : MonoBehaviour
         for (int i = 0; i < tamanhoDaTabelaMinerais; i++)
         {
             ListaMinerais.catalogoMinerais[i] = new Mineral();
+            Mineral mineral = ListaMinerais.catalogoMinerais[i];
 
-            ListaMinerais.catalogoMinerais[i].nomeTecnico = listaDeDadosMinerais[num_colunasMinerais * (i + 1)].Replace('"', ' ');
-            ListaMinerais.catalogoMinerais[i].classe = listaDeDadosMinerais[num_colunasMinerais * (i + 1) + 1].Replace('"', ' ');
-            ListaMinerais.catalogoMinerais[i].grupo = listaDeDadosMinerais[num_colunasMinerais * (i + 1) + 2].Replace('"', ' ');
-            ListaMinerais.catalogoMinerais[i].formula = listaDeDadosMinerais[num_colunasMinerais * (i + 1) + 3].Replace('"', ' ');
-            ListaMinerais.catalogoMinerais[i].tipo = "Mineral";
-            ListaMinerais.catalogoMinerais[i].tambemConhecidoPor = listaDeDadosMinerais[num_colunasMinerais * (i + 1) + 4].Replace('"', ' ');
-            ListaMinerais.catalogoMinerais[i].variedades = listaDeDadosMinerais[num_colunasMinerais * (i + 1) + 5].Replace('"', ' ');
-            ListaMinerais.catalogoMinerais[i].clivagem = listaDeDadosMinerais[num_colunasMinerais * (i + 1) + 6].Replace('"', ' ');
-            ListaMinerais.catalogoMinerais[i].dureza = listaDeDadosMinerais[num_colunasMinerais * (i + 1) + 7].Replace('"', ' ');
-            ListaMinerais.catalogoMinerais[i].fratura = listaDeDadosMinerais[num_colunasMinerais * (i + 1) + 8].Replace('"', ' ');
-            ListaMinerais.catalogoMinerais[i].densidade = listaDeDadosMinerais[num_colunasMinerais * (i + 1) + 9].Replace('"', ' ');
-            ListaMinerais.catalogoMinerais[i].tenacidade = listaDeDadosMinerais[num_colunasMinerais * (i + 1) + 10].Replace('"', ' ');
-            ListaMinerais.catalogoMinerais[i].diafaneidade = listaDeDadosMinerais[num_colunasMinerais * (i + 1) + 11].Replace('"', ' ');
-            ListaMinerais.catalogoMinerais[i].traco = listaDeDadosMinerais[num_colunasMinerais * (i + 1) + 12].Replace('"', ' ');
-            ListaMinerais.catalogoMinerais[i].brilho = listaDeDadosMinerais[num_colunasMinerais * (i + 1) + 13].Replace('"', ' ');
-            ListaMinerais.catalogoMinerais[i].cor = listaDeDadosMinerais[num_colunasMinerais * (i + 1) + 14].Replace('"', ' ');
-            ListaMinerais.catalogoMinerais[i].habito = listaDeDadosMinerais[num_colunasMinerais * (i + 1) + 15].Replace('"', ' ');
-            ListaMinerais.catalogoMinerais[i].rochaCotidiano = listaDeDadosMinerais[num_colunasMinerais * (i + 1) + 16].Replace('"', ' ');
-            ListaMinerais.catalogoMinerais[i].outrasInfo = listaDeDadosMinerais[num_colunasMinerais * (i + 1) + 17].Replace('"', ' ');
-            ListaMinerais.catalogoMinerais[i].classeCristalina = listaDeDadosMinerais[num_colunasMinerais * (i + 1) + 18].Replace('"', ' ');
-            ListaMinerais.catalogoMinerais[i].curiosidades = listaDeDadosMinerais[num_colunasMinerais * (i + 1) + 19].Replace('"', ' ');
-            ListaMinerais.catalogoMinerais[i].doacao = listaDeDadosMinerais[num_colunasMinerais * (i + 1) + 20].Replace('"', ' ');
-            ListaMinerais.catalogoMinerais[i].museuhe = listaDeDadosMinerais[num_colunasMinerais * (i + 1) + 21].Replace('"', ' ');
-            ListaMinerais.catalogoMinerais[i].uspgeociencias = listaDeDadosMinerais[num_colunasMinerais * (i + 1) + 22].Replace('"', ' ');
-            ListaMinerais.catalogoMinerais[i].minmicro = listaDeDadosMinerais[num_colunasMinerais * (i + 1) + 23].Replace('"', ' ');
-            ListaMinerais.catalogoMinerais[i].wikipedia = listaDeDadosMinerais[num_colunasMinerais * (i + 1) + 24].Replace('"', ' ');
-            ListaMinerais.catalogoMinerais[i].outro = listaDeDadosMinerais[num_colunasMinerais * (i + 1) + 25].Replace('"', ' ');
+            mineral.nomeTecnico = listaDeDadosMinerais[num_colunasMinerais * (i + 1)].Replace('"', ' ');
+            mineral.classe = listaDeDadosMinerais[num_colunasMinerais * (i + 1) + 1].Replace('"', ' ');
+            mineral.grupo = listaDeDadosMinerais[num_colunasMinerais * (i + 1) + 2].Replace('"', ' ');
+            mineral.formula = listaDeDadosMinerais[num_colunasMinerais * (i + 1) + 3].Replace('"', ' ');
+            mineral.tipo = "Mineral";
+            mineral.tambemConhecidoPor = listaDeDadosMinerais[num_colunasMinerais * (i + 1) + 4].Replace('"', ' ');
+            mineral.variedades = listaDeDadosMinerais[num_colunasMinerais * (i + 1) + 5].Replace('"', ' ');
+            mineral.clivagem = listaDeDadosMinerais[num_colunasMinerais * (i + 1) + 6].Replace('"', ' ');
+            mineral.dureza = listaDeDadosMinerais[num_colunasMinerais * (i + 1) + 7].Replace('"', ' ');
+            mineral.fratura = listaDeDadosMinerais[num_colunasMinerais * (i + 1) + 8].Replace('"', ' ');
+            mineral.densidade = listaDeDadosMinerais[num_colunasMinerais * (i + 1) + 9].Replace('"', ' ');
+            mineral.tenacidade = listaDeDadosMinerais[num_colunasMinerais * (i + 1) + 10].Replace('"', ' ');
+            mineral.diafaneidade = listaDeDadosMinerais[num_colunasMinerais * (i + 1) + 11].Replace('"', ' ');
+            mineral.traco = listaDeDadosMinerais[num_colunasMinerais * (i + 1) + 12].Replace('"', ' ');
+            mineral.brilho = listaDeDadosMinerais[num_colunasMinerais * (i + 1) + 13].Replace('"', ' ');
+            mineral.cor = listaDeDadosMinerais[num_colunasMinerais * (i + 1) + 14].Replace('"', ' ');
+            mineral.habito = listaDeDadosMinerais[num_colunasMinerais * (i + 1) + 15].Replace('"', ' ');
+            mineral.rochaCotidiano = listaDeDadosMinerais[num_colunasMinerais * (i + 1) + 16].Replace('"', ' ');
+            mineral.outrasInfo = listaDeDadosMinerais[num_colunasMinerais * (i + 1) + 17].Replace('"', ' ');
+            mineral.classeCristalina = listaDeDadosMinerais[num_colunasMinerais * (i + 1) + 18].Replace('"', ' ');
+            mineral.curiosidades = listaDeDadosMinerais[num_colunasMinerais * (i + 1) + 19].Replace('"', ' ');
+            mineral.doacao = listaDeDadosMinerais[num_colunasMinerais * (i + 1) + 20].Replace('"', ' ');
+            mineral.museuhe = listaDeDadosMinerais[num_colunasMinerais * (i + 1) + 21].Replace('"', ' ');
+            mineral.uspgeociencias = listaDeDadosMinerais[num_colunasMinerais * (i + 1) + 22].Replace('"', ' ');
+            mineral.minmicro = listaDeDadosMinerais[num_colunasMinerais * (i + 1) + 23].Replace('"', ' ');
+            mineral.wikipedia = listaDeDadosMinerais[num_colunasMinerais * (i + 1) + 24].Replace('"', ' ');
+            mineral.outro = listaDeDadosMinerais[num_colunasMinerais * (i + 1) + 25].Replace('"', ' ');
 
-            Debug.Log(i + ListaMinerais.catalogoMinerais[i].nomeTecnico);
-            indicesRochasMinerais.Add(ListaMinerais.catalogoMinerais[i].nomeTecnico, i);
-            tiposRochasMinerais.Add(ListaMinerais.catalogoMinerais[i].nomeTecnico, "Mineral");
+            Debug.Log(i + mineral.nomeTecnico);
+            indicesRochasMinerais.Add(mineral.nomeTecnico, i);
+            tiposRochasMinerais.Add(mineral.nomeTecnico, "Mineral");
         }
 
         // Preenchendo as informações de rochas ígneas.
         for (int i = 0; i < tamanhoDaTabelaIgneas; i++)
         {
             ListaIgneas.catalogoIgneas[i] = new RochaIgnea();
+            RochaIgnea rochaIgnea = ListaIgneas.catalogoIgneas[i];
 
-            ListaIgneas.catalogoIgneas[i].nomeTecnico = listaDeDadosIgneas[num_colunasIgneas * (i + 1)];
-            ListaIgneas.catalogoIgneas[i].tipo = listaDeDadosIgneas[num_colunasIgneas * (i + 1) + 1];
-            ListaIgneas.catalogoIgneas[i].variacao = listaDeDadosIgneas[num_colunasIgneas * (i + 1) + 2];
-            ListaIgneas.catalogoIgneas[i].tambemConhecidoPor = listaDeDadosIgneas[num_colunasIgneas * (i + 1) + 3];
-            ListaIgneas.catalogoIgneas[i].familia = listaDeDadosIgneas[num_colunasIgneas * (i + 1) + 4];
-            ListaIgneas.catalogoIgneas[i].magmaOriginario = listaDeDadosIgneas[num_colunasIgneas * (i + 1) + 5];
-            ListaIgneas.catalogoIgneas[i].comoForma = listaDeDadosIgneas[num_colunasIgneas * (i + 1) + 6];
-            ListaIgneas.catalogoIgneas[i].rochaCotidiano = listaDeDadosIgneas[num_colunasIgneas * (i + 1) + 7];
-            ListaIgneas.catalogoIgneas[i].curiosidades = listaDeDadosIgneas[num_colunasIgneas * (i + 1) + 8];
-            ListaIgneas.catalogoIgneas[i].doacao = listaDeDadosIgneas[num_colunasIgneas * (i + 1) + 9];
-            ListaIgneas.catalogoIgneas[i].museuhe = listaDeDadosIgneas[num_colunasIgneas * (i + 1) + 10];
-            ListaIgneas.catalogoIgneas[i].uspgeociencias = listaDeDadosIgneas[num_colunasIgneas * (i + 1) + 11];
-            ListaIgneas.catalogoIgneas[i].wikipedia = listaDeDadosIgneas[num_colunasIgneas * (i + 1) + 12];
-            ListaIgneas.catalogoIgneas[i].outro = listaDeDadosIgneas[num_colunasIgneas * (i + 1) + 13];
+            rochaIgnea.nomeTecnico = listaDeDadosIgneas[num_colunasIgneas * (i + 1)];
+            rochaIgnea.tipo = "Ígnea";
+            rochaIgnea.variacao = listaDeDadosIgneas[num_colunasIgneas * (i + 1) + 2];
+            rochaIgnea.tambemConhecidoPor = listaDeDadosIgneas[num_colunasIgneas * (i + 1) + 3];
+            rochaIgnea.familia = listaDeDadosIgneas[num_colunasIgneas * (i + 1) + 4];
+            rochaIgnea.magmaOriginario = listaDeDadosIgneas[num_colunasIgneas * (i + 1) + 5];
+            rochaIgnea.comoForma = listaDeDadosIgneas[num_colunasIgneas * (i + 1) + 6];
+            rochaIgnea.correspondenteExtrusivoIntrusivo = listaDeDadosIgneas[num_colunasIgneas * (i + 1) + 7];
+            rochaIgnea.rochaCotidiano = listaDeDadosIgneas[num_colunasIgneas * (i + 1) + 8];
+            rochaIgnea.curiosidades = listaDeDadosIgneas[num_colunasIgneas * (i + 1) + 9];
+            rochaIgnea.doacao = listaDeDadosIgneas[num_colunasIgneas * (i + 1) + 10];
+            rochaIgnea.museuhe = listaDeDadosIgneas[num_colunasIgneas * (i + 1) + 11];
+            rochaIgnea.uspgeociencias = listaDeDadosIgneas[num_colunasIgneas * (i + 1) + 12];
+            rochaIgnea.wikipedia = listaDeDadosIgneas[num_colunasIgneas * (i + 1) + 13];
+            rochaIgnea.outro = listaDeDadosIgneas[num_colunasIgneas * (i + 1) + 14];
 
-            indicesRochasMinerais.Add(ListaIgneas.catalogoIgneas[i].nomeTecnico, i);
-            tiposRochasMinerais.Add(ListaIgneas.catalogoIgneas[i].nomeTecnico, "Ígnea");
+            indicesRochasMinerais.Add(rochaIgnea.nomeTecnico, i);
+            tiposRochasMinerais.Add(rochaIgnea.nomeTecnico, "Ígnea");
         }
 
         // Preenchendo as informações de rochas metamórficas.
         for (int i = 0; i < tamanhoDaTabelaMetamorficas; i++)
         {
             ListaMetamorficas.catalogoMetamorficas[i] = new RochaMetamorfica();
+            RochaMetamorfica rochaMetamorfica = ListaMetamorficas.catalogoMetamorficas[i];
 
-            ListaMetamorficas.catalogoMetamorficas[i].nomeTecnico = listaDeDadosMetamorficas[num_colunasMetamorficas * (i + 1)];
-            ListaMetamorficas.catalogoMetamorficas[i].variacao = listaDeDadosMetamorficas[num_colunasMetamorficas * (i + 1) + 1];
-            ListaMetamorficas.catalogoMetamorficas[i].tambemConhecidoPor = listaDeDadosMetamorficas[num_colunasMetamorficas * (i + 1) + 2];
-            ListaMetamorficas.catalogoMetamorficas[i].familia = listaDeDadosMetamorficas[num_colunasMetamorficas * (i + 1) + 3];
-            ListaMetamorficas.catalogoMetamorficas[i].tipoEGrau = listaDeDadosMetamorficas[num_colunasMetamorficas * (i + 1) + 4];
-            ListaMetamorficas.catalogoMetamorficas[i].comoForma = listaDeDadosMetamorficas[num_colunasMetamorficas * (i + 1) + 5];
-            ListaMetamorficas.catalogoMetamorficas[i].condicoesDeFormacao = listaDeDadosMetamorficas[num_colunasMetamorficas * (i + 1) + 6];
-            ListaMetamorficas.catalogoMetamorficas[i].rochaCotidiano = listaDeDadosMetamorficas[num_colunasMetamorficas * (i + 1) + 7];
-            ListaMetamorficas.catalogoMetamorficas[i].curiosidades = listaDeDadosMetamorficas[num_colunasMetamorficas * (i + 1) + 8];
-            ListaMetamorficas.catalogoMetamorficas[i].doacao = listaDeDadosMetamorficas[num_colunasMetamorficas * (i + 1) + 9];
-            ListaMetamorficas.catalogoMetamorficas[i].museuhe = listaDeDadosMetamorficas[num_colunasMetamorficas * (i + 1) + 10];
-            ListaMetamorficas.catalogoMetamorficas[i].uspgeociencias = listaDeDadosMetamorficas[num_colunasMetamorficas * (i + 1) + 11];
-            ListaMetamorficas.catalogoMetamorficas[i].wikipedia = listaDeDadosMetamorficas[num_colunasMetamorficas * (i + 1) + 12];
-            ListaMetamorficas.catalogoMetamorficas[i].outro = listaDeDadosMetamorficas[num_colunasMetamorficas * (i + 1) + 13];
+            rochaMetamorfica.nomeTecnico = listaDeDadosMetamorficas[num_colunasMetamorficas * (i + 1)];
+            rochaMetamorfica.variacao = "Metamórfica";
+            rochaMetamorfica.tambemConhecidoPor = listaDeDadosMetamorficas[num_colunasMetamorficas * (i + 1) + 2];
+            rochaMetamorfica.familia = listaDeDadosMetamorficas[num_colunasMetamorficas * (i + 1) + 3];
+            rochaMetamorfica.tipoEGrau = listaDeDadosMetamorficas[num_colunasMetamorficas * (i + 1) + 4];
+            rochaMetamorfica.comoForma = listaDeDadosMetamorficas[num_colunasMetamorficas * (i + 1) + 5];
+            rochaMetamorfica.condicoesDeFormacao = listaDeDadosMetamorficas[num_colunasMetamorficas * (i + 1) + 6];
+            rochaMetamorfica.rochaCotidiano = listaDeDadosMetamorficas[num_colunasMetamorficas * (i + 1) + 7];
+            rochaMetamorfica.curiosidades = listaDeDadosMetamorficas[num_colunasMetamorficas * (i + 1) + 8];
+            rochaMetamorfica.doacao = listaDeDadosMetamorficas[num_colunasMetamorficas * (i + 1) + 9];
+            rochaMetamorfica.museuhe = listaDeDadosMetamorficas[num_colunasMetamorficas * (i + 1) + 10];
+            rochaMetamorfica.uspgeociencias = listaDeDadosMetamorficas[num_colunasMetamorficas * (i + 1) + 11];
+            rochaMetamorfica.wikipedia = listaDeDadosMetamorficas[num_colunasMetamorficas * (i + 1) + 12];
+            rochaMetamorfica.museuUnesp = listaDeDadosMetamorficas[num_colunasMetamorficas * (i + 1) + 13];
+            rochaMetamorfica.outro = listaDeDadosMetamorficas[num_colunasMetamorficas * (i + 1) + 14];
 
-            indicesRochasMinerais.Add(ListaMetamorficas.catalogoMetamorficas[i].nomeTecnico, i);
-            tiposRochasMinerais.Add(ListaMetamorficas.catalogoMetamorficas[i].nomeTecnico, "Metamórfica");
+            indicesRochasMinerais.Add(rochaMetamorfica.nomeTecnico, i);
+            tiposRochasMinerais.Add(rochaMetamorfica.nomeTecnico, "Metamórfica");
         }
 
         // Preenchendo as informações de rochas sedimentares.
         for (int i = 0; i < tamanhoDaTabelaSedimentares; i++)
         {
             ListaSedimentares.catalogoSedimentares[i] = new RochaSedimentar();
+            RochaSedimentar rochaSedimentar = ListaSedimentares.catalogoSedimentares[i];
 
-            ListaSedimentares.catalogoSedimentares[i].nomeTecnico = listaDeDadosSedimentares[num_colunasSedimentares * (i + 1)];
-            ListaSedimentares.catalogoSedimentares[i].tipo = listaDeDadosSedimentares[num_colunasSedimentares * (i + 1) + 1];
-            ListaSedimentares.catalogoSedimentares[i].tambemConhecidoPor = listaDeDadosSedimentares[num_colunasSedimentares * (i + 1) + 2];
-            ListaSedimentares.catalogoSedimentares[i].familia = listaDeDadosSedimentares[num_colunasSedimentares * (i + 1) + 3];
-            ListaSedimentares.catalogoSedimentares[i].sedimentosOriginarios = listaDeDadosSedimentares[num_colunasSedimentares * (i + 1) + 4];
-            ListaSedimentares.catalogoSedimentares[i].comoForma = listaDeDadosSedimentares[num_colunasSedimentares * (i + 1) + 5];
-            ListaSedimentares.catalogoSedimentares[i].texturas = listaDeDadosSedimentares[num_colunasSedimentares * (i + 1) + 6];
-            ListaSedimentares.catalogoSedimentares[i].mineraisEssenciais = listaDeDadosSedimentares[num_colunasSedimentares * (i + 1) + 7];
-            ListaSedimentares.catalogoSedimentares[i].mineraisAcessorios = listaDeDadosSedimentares[num_colunasSedimentares * (i + 1) + 8];
-            ListaSedimentares.catalogoSedimentares[i].rochaCotidiano = listaDeDadosSedimentares[num_colunasSedimentares * (i + 1) + 9];
-            ListaSedimentares.catalogoSedimentares[i].curiosidades = listaDeDadosSedimentares[num_colunasSedimentares * (i + 1) + 10];
-            ListaSedimentares.catalogoSedimentares[i].doacao = listaDeDadosSedimentares[num_colunasSedimentares * (i + 1) + 11];
-            ListaSedimentares.catalogoSedimentares[i].museuhe = listaDeDadosSedimentares[num_colunasSedimentares * (i + 1) + 12];
-            ListaSedimentares.catalogoSedimentares[i].uspgeociencias = listaDeDadosSedimentares[num_colunasSedimentares * (i + 1) + 13];
-            ListaSedimentares.catalogoSedimentares[i].wikipedia = listaDeDadosSedimentares[num_colunasSedimentares * (i + 1) + 14];
-            ListaSedimentares.catalogoSedimentares[i].outro = listaDeDadosSedimentares[num_colunasSedimentares * (i + 1) + 15];
-            ListaSedimentares.catalogoSedimentares[i].outro2 = listaDeDadosSedimentares[num_colunasSedimentares * (i + 1) + 16];
+            rochaSedimentar.nomeTecnico = listaDeDadosSedimentares[num_colunasSedimentares * (i + 1)];
+            rochaSedimentar.tipo = listaDeDadosSedimentares[num_colunasSedimentares * (i + 1) + 1];
+            rochaSedimentar.tambemConhecidoPor = listaDeDadosSedimentares[num_colunasSedimentares * (i + 1) + 2];
+            rochaSedimentar.familia = listaDeDadosSedimentares[num_colunasSedimentares * (i + 1) + 3];
+            rochaSedimentar.sedimentosOriginarios = listaDeDadosSedimentares[num_colunasSedimentares * (i + 1) + 4];
+            rochaSedimentar.comoForma = listaDeDadosSedimentares[num_colunasSedimentares * (i + 1) + 5];
+            rochaSedimentar.texturas = listaDeDadosSedimentares[num_colunasSedimentares * (i + 1) + 6];
+            rochaSedimentar.mineraisEssenciais = listaDeDadosSedimentares[num_colunasSedimentares * (i + 1) + 7];
+            rochaSedimentar.mineraisAcessorios = listaDeDadosSedimentares[num_colunasSedimentares * (i + 1) + 8];
+            rochaSedimentar.rochaCotidiano = listaDeDadosSedimentares[num_colunasSedimentares * (i + 1) + 9];
+            rochaSedimentar.curiosidades = listaDeDadosSedimentares[num_colunasSedimentares * (i + 1) + 10];
+            rochaSedimentar.doacao = listaDeDadosSedimentares[num_colunasSedimentares * (i + 1) + 11];
+            rochaSedimentar.museuhe = listaDeDadosSedimentares[num_colunasSedimentares * (i + 1) + 12];
+            rochaSedimentar.uspgeociencias = listaDeDadosSedimentares[num_colunasSedimentares * (i + 1) + 13];
+            rochaSedimentar.wikipedia = listaDeDadosSedimentares[num_colunasSedimentares * (i + 1) + 14];
+            rochaSedimentar.outro = listaDeDadosSedimentares[num_colunasSedimentares * (i + 1) + 15];
+            rochaSedimentar.outro2 = listaDeDadosSedimentares[num_colunasSedimentares * (i + 1) + 16];
 
-            indicesRochasMinerais.Add(ListaSedimentares.catalogoSedimentares[i].nomeTecnico, i);
-            tiposRochasMinerais.Add(ListaSedimentares.catalogoSedimentares[i].nomeTecnico, "Sedimentar");
+            indicesRochasMinerais.Add(rochaSedimentar.nomeTecnico, i);
+            tiposRochasMinerais.Add(rochaSedimentar.nomeTecnico, "Sedimentar");
         }
 
         // Ajustando o tamanho do ScrollView (Content).
@@ -376,6 +393,9 @@ public class LeitorDeDados1 : MonoBehaviour
             textoTipo.SetText(ListaMinerais.catalogoMinerais[z].tipo);
             componenteImagemFoto.sprite = Resources.Load<Sprite>("Amianto Crisotila");
 
+            botoesRochasMinerais.Add(item1.name, retanguloItem);
+            botaoRenderizado.Add(item1.name, true);
+            botaoDictGameObjectRochasMinerais.Add(item1.name, item1);
             // Descobrir se é possível carregar imagens dinamicamente. (sim, falta implementar) (deixar pra depois)
         }
 
@@ -397,8 +417,9 @@ public class LeitorDeDados1 : MonoBehaviour
                 ultimaPosicao = rectPosicao.localPosition;
             }
 
-            Debug.Log(z + ListaMetamorficas.catalogoMetamorficas[z].nomeTecnico);
-            Debug.Log(item2.name);
+            botaoDictGameObjectRochasMinerais.Add(item2.name, item2);
+            botoesRochasMinerais.Add(item2.name, rectPosicao);
+            botaoRenderizado.Add(item2.name, true);
         }
 
         for (int z = 0; z < tamanhoDaTabelaIgneas; z++)
@@ -421,6 +442,10 @@ public class LeitorDeDados1 : MonoBehaviour
 
             Debug.Log(z + ListaIgneas.catalogoIgneas[z].nomeTecnico);
             Debug.Log(item3.name);
+
+            botoesRochasMinerais.Add(item3.name, rectPosicao);
+            botaoRenderizado.Add(item3.name, true);
+            botaoDictGameObjectRochasMinerais.Add(item3.name, item3);
         }
 
         for (int z = 0; z < tamanhoDaTabelaSedimentares; z++)
@@ -443,6 +468,13 @@ public class LeitorDeDados1 : MonoBehaviour
 
             Debug.Log(z + ListaSedimentares.catalogoSedimentares[z].nomeTecnico);
             Debug.Log(item4.name);
+
+            botoesRochasMinerais.Add(item4.name, rectPosicao);
+            botaoRenderizado.Add(item4.name, true);
+            botaoDictGameObjectRochasMinerais.Add(item4.name, item4);
         }
+
+        listaDeNomesDeRochasEMinerais = botoesRochasMinerais.Keys.ToList();
+        listaDeNomesBotoesRenderizados = listaDeNomesDeRochasEMinerais;
     }
 }

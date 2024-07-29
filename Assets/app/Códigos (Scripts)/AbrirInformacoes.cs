@@ -8,6 +8,7 @@ using TMPro;
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.UI;
+using static LeitorDeDados1;
 using static System.Net.Mime.MediaTypeNames;
 
 public class AbrirInformacoes : MonoBehaviour
@@ -25,15 +26,22 @@ public class AbrirInformacoes : MonoBehaviour
     private GameObject cameraPrincipal;
     private Dictionary<string, int> indices;
     private Dictionary<string, string> tipos;
-    private LeitorDeDados1.ListaDeMinerais ListaMinerais;
-    private LeitorDeDados1.ListaDeIgneas ListaIgneas;
-    private LeitorDeDados1.ListaDeSedimentares ListaSedimentares;
+    private ListaDeMinerais ListaMinerais;
+    private ListaDeIgneas ListaIgneas;
+    private ListaDeSedimentares ListaSedimentares;
+    private ListaDeMetamorficas ListaMetamórficas;
     private GameObject abaMinerais;
     private GameObject abaIgneas;
     private GameObject abaSedimentares;
+    private GameObject abaMetamórficas;
     private GameObject contentMinerais;
     private GameObject contentIgneas;
     private GameObject contentSedimentares;
+    private GameObject contentMetamórficas;
+    private GameObject informacoesMinerais;
+    private GameObject informacoesIgneas;
+    private GameObject informacoesSedimentares;
+    private GameObject informacoesMetamórficas;
 
     // Start is called before the first frame update
     void Start()
@@ -55,16 +63,26 @@ public class AbrirInformacoes : MonoBehaviour
         ListaMinerais = scriptLerDados.ListaMinerais;
         abaMinerais = scriptLerDados.abaMinerais;
         contentMinerais = scriptLerDados.minContent;
+        informacoesMinerais = scriptLerDados.minInformacoes;
 
         // Itens das ígneas
         ListaIgneas = scriptLerDados.ListaIgneas;
         abaIgneas = scriptLerDados.abaIgneas;
         contentIgneas = scriptLerDados.igneasContent;
+        informacoesIgneas = scriptLerDados.igneasInformacoes;
 
         // Itens das sedimentares
         ListaSedimentares = scriptLerDados.ListaSedimentares;
         abaSedimentares = scriptLerDados.abaSedimentares;
         contentSedimentares = scriptLerDados.sedimentaresContent;
+        informacoesSedimentares = scriptLerDados.sedimentaresInformacoes;
+
+        // Itens das metamórficas
+
+        ListaMetamórficas = scriptLerDados.ListaMetamorficas;
+        abaMetamórficas = scriptLerDados.abaMetamorficas;
+        contentMetamórficas = scriptLerDados.metamorficasContent;
+        informacoesMetamórficas = scriptLerDados.metamorficasInformacoes;
 
         // Adiciona a interatividade de clique.
         Button abrirPagina = botaoAcesso.GetComponent<Button>();
@@ -82,40 +100,40 @@ public class AbrirInformacoes : MonoBehaviour
             case "Mineral":
 
                 abaMinerais.SetActive(true);
-                textos = scriptLerDados.minInformacoes.GetComponentsInChildren<TextMeshProUGUI>();
+                textos = informacoesMinerais.GetComponentsInChildren<TextMeshProUGUI>();
                 indice = indices[itemPai.name];
-                var listaTemp = ListaMinerais.catalogoMinerais;
+                Mineral mineral = ListaMinerais.catalogoMinerais[indice];
 
                 // Preenche as caixas de texto.
-                textos[0].text = ListaMinerais.catalogoMinerais[indice].nomeTecnico;
-                textos[1].text = ListaMinerais.catalogoMinerais[indice].formula;
-                textos[4].text = ListaMinerais.catalogoMinerais[indice].nomeTecnico;
-                textos[6].text = ListaMinerais.catalogoMinerais[indice].tambemConhecidoPor;
-                textos[8].text = ListaMinerais.catalogoMinerais[indice].variedades;
-                textos[10].text = ListaMinerais.catalogoMinerais[indice].tipo;
-                textos[12].text = ListaMinerais.catalogoMinerais[indice].formula;
-                textos[14].text = ListaMinerais.catalogoMinerais[indice].classe;
-                textos[16].text = ListaMinerais.catalogoMinerais[indice].grupo;
-                textos[20].text = ListaMinerais.catalogoMinerais[indice].cor;
-                textos[22].text = ListaMinerais.catalogoMinerais[indice].brilho;
-                textos[24].text = ListaMinerais.catalogoMinerais[indice].traco;
-                textos[26].text = ListaMinerais.catalogoMinerais[indice].diafaneidade;
-                textos[29].text = ListaMinerais.catalogoMinerais[indice].densidade;
-                textos[31].text = ListaMinerais.catalogoMinerais[indice].dureza;
-                textos[33].text = ListaMinerais.catalogoMinerais[indice].tenacidade;
-                textos[35].text = ListaMinerais.catalogoMinerais[indice].fratura;
-                textos[37].text = ListaMinerais.catalogoMinerais[indice].clivagem;
-                textos[40].text = ListaMinerais.catalogoMinerais[indice].habito;
-                textos[42].text = ListaMinerais.catalogoMinerais[indice].classeCristalina;
-                textos[44].text = ListaMinerais.catalogoMinerais[indice].outrasInfo;
-                textos[46].text = ListaMinerais.catalogoMinerais[indice].rochaCotidiano;
-                textos[48].text = ListaMinerais.catalogoMinerais[indice].curiosidades;
-                textos[50].text = ListaMinerais.catalogoMinerais[indice].doacao;
-                textos[53].text = ListaMinerais.catalogoMinerais[indice].museuhe;
-                textos[55].text = ListaMinerais.catalogoMinerais[indice].uspgeociencias;
-                textos[57].text = ListaMinerais.catalogoMinerais[indice].minmicro;
-                textos[59].text = ListaMinerais.catalogoMinerais[indice].wikipedia;
-                textos[61].text = ListaMinerais.catalogoMinerais[indice].outro;
+                textos[0].text = mineral.nomeTecnico;
+                textos[1].text = mineral.formula;
+                textos[4].text = mineral.nomeTecnico;
+                textos[6].text = mineral.tambemConhecidoPor;
+                textos[8].text = mineral.variedades;
+                textos[10].text = mineral.tipo;
+                textos[12].text = mineral.formula;
+                textos[14].text = mineral.classe;
+                textos[16].text = mineral.grupo;
+                textos[20].text = mineral.cor;
+                textos[22].text = mineral.brilho;
+                textos[24].text = mineral.traco;
+                textos[26].text = mineral.diafaneidade;
+                textos[29].text = mineral.densidade;
+                textos[31].text = mineral.dureza;
+                textos[33].text = mineral.tenacidade;
+                textos[35].text = mineral.fratura;
+                textos[37].text = mineral.clivagem;
+                textos[40].text = mineral.habito;
+                textos[42].text = mineral.classeCristalina;
+                textos[44].text = mineral.outrasInfo;
+                textos[46].text = mineral.rochaCotidiano;
+                textos[48].text = mineral.curiosidades;
+                textos[50].text = mineral.doacao;
+                textos[53].text = mineral.museuhe;
+                textos[55].text = mineral.uspgeociencias;
+                textos[57].text = mineral.minmicro;
+                textos[59].text = mineral.wikipedia;
+                textos[61].text = mineral.outro;
 
                 for (int i = 53; i <= 61; i = i + 2)
                 {
@@ -131,24 +149,23 @@ public class AbrirInformacoes : MonoBehaviour
                     }
                 }
 
-                AjustarTextos(scriptLerDados.minInformacoes);
-                AdjustSizeScrollview(contentMinerais, scriptLerDados.minInformacoes);
-
-                cameraPrincipal.transform.localPosition = new Vector3(-1501f, cameraPrincipal.transform.localPosition.y, cameraPrincipal.transform.localPosition.z);
+                AjustarTextos(informacoesMinerais);
+                AjustarScrollView(contentMinerais, informacoesMinerais);
+                cameraPrincipal.transform.localPosition = new Vector3(-2000f, cameraPrincipal.transform.localPosition.y, cameraPrincipal.transform.localPosition.z);
                 break;
 
             case "Ígnea":
 
                 abaIgneas.SetActive(true);
-                textos = scriptLerDados.igneasInformacoes.GetComponentsInChildren<TextMeshProUGUI>();
+                textos = informacoesIgneas.GetComponentsInChildren<TextMeshProUGUI>();
                 indice = indices[itemPai.name];
-                var rochaIgnea = ListaIgneas.catalogoIgneas[indice];
+                RochaIgnea rochaIgnea = ListaIgneas.catalogoIgneas[indice];
 
                 textos[0].text = rochaIgnea.nomeTecnico;
                 textos[1].text = rochaIgnea.variacao;
                 textos[4].text = rochaIgnea.nomeTecnico;
                 textos[6].text = rochaIgnea.tambemConhecidoPor;
-                textos[8].text = rochaIgnea.variedades;
+                textos[8].text = rochaIgnea.correspondenteExtrusivoIntrusivo;
                 textos[10].text = rochaIgnea.variacao;
                 textos[12].text = rochaIgnea.familia;
                 textos[14].text = rochaIgnea.magmaOriginario;
@@ -165,7 +182,7 @@ public class AbrirInformacoes : MonoBehaviour
                 {
                     if (textos[i].text == "-")
                     {
-                        textos[i].color = new Color(7f, 0f, 0f, 255f);
+                        textos[i].color = new Color(7f / 255f, 0f / 255f, 0f / 255f, 255f / 255f);
                         textos[i].fontStyle = FontStyles.Normal;
                     }
                     else
@@ -175,16 +192,17 @@ public class AbrirInformacoes : MonoBehaviour
                     }
                 }
 
-                StartCoroutine(DelayedAdjustment(scriptLerDados.igneasInformacoes, contentIgneas));
-                cameraPrincipal.transform.localPosition = new Vector3(-2940f, cameraPrincipal.transform.localPosition.y, cameraPrincipal.transform.localPosition.z);
+                AjustarTextos(informacoesIgneas);
+                AjustarScrollView(contentIgneas, informacoesIgneas);
+                cameraPrincipal.transform.localPosition = new Vector3(-4000f, cameraPrincipal.transform.localPosition.y, cameraPrincipal.transform.localPosition.z);
                 break;
 
             case "Sedimentar":
 
                 abaSedimentares.SetActive(true);
-                textos = scriptLerDados.sedimentaresInformacoes.GetComponentsInChildren<TextMeshProUGUI>();
+                textos = informacoesSedimentares.GetComponentsInChildren<TextMeshProUGUI>();
                 indice = indices[itemPai.name];
-                var rochaSedimentar = ListaSedimentares.catalogoSedimentares[indice];
+                RochaSedimentar rochaSedimentar = ListaSedimentares.catalogoSedimentares[indice];
 
                 textos[0].text = rochaSedimentar.nomeTecnico;
                 textos[1].text = rochaSedimentar.tipo;
@@ -210,7 +228,7 @@ public class AbrirInformacoes : MonoBehaviour
                 {
                     if (textos[i].text == "-")
                     {
-                        textos[i].color = new Color(7f, 0f, 0f, 255f);
+                        textos[i].color = new Color(7f / 255f, 0f / 255f, 0f / 255f, 255f / 255f);
                         textos[i].fontStyle = FontStyles.Normal;
                     }
                     else
@@ -222,7 +240,7 @@ public class AbrirInformacoes : MonoBehaviour
 
                 if (textos[37].text == "-")
                 {
-                    textos[37].color = new Color(7f, 0f, 0f, 255f);
+                    textos[37].color = new Color(7f / 255f, 0f / 255f, 0f / 255f, 255f / 255f);
                     textos[37].fontStyle = FontStyles.Normal;
                 }
                 else
@@ -231,23 +249,56 @@ public class AbrirInformacoes : MonoBehaviour
                     textos[37].fontStyle = FontStyles.Underline;
                 }
 
-                AjustarTextos(scriptLerDados.sedimentaresInformacoes);
-                AdjustSizeScrollview(contentSedimentares, scriptLerDados.sedimentaresInformacoes);
-                cameraPrincipal.transform.position = new Vector3(-4420f, cameraPrincipal.transform.position.y, cameraPrincipal.transform.position.z);
+                AjustarTextos(informacoesSedimentares);
+                AjustarScrollView(contentSedimentares, informacoesSedimentares);
+                cameraPrincipal.transform.localPosition = new Vector3(-6000f, cameraPrincipal.transform.localPosition.y, cameraPrincipal.transform.localPosition.z);
+                break;
+
+            case "Metamórfica":
+
+                abaMetamórficas.SetActive(true);
+                indice = indices[itemPai.name];
+                textos = informacoesMetamórficas.GetComponentsInChildren<TextMeshProUGUI>();
+                RochaMetamorfica metamorfica = ListaMetamórficas.catalogoMetamorficas[indice];
+
+                textos[0].text = metamorfica.nomeTecnico;
+                textos[3].text = metamorfica.nomeTecnico;
+                textos[5].text = metamorfica.tambemConhecidoPor;
+                textos[7].text = metamorfica.familia;
+                textos[9].text = metamorfica.tipoEGrau;
+                textos[11].text = metamorfica.condicoesDeFormacao;
+                textos[13].text = metamorfica.comoForma;
+                textos[15].text = metamorfica.rochaCotidiano;
+                textos[17].text = metamorfica.curiosidades;
+                textos[19].text = metamorfica.doacao;
+                textos[22].text = metamorfica.museuhe;
+                textos[24].text = metamorfica.uspgeociencias;
+                textos[26].text = metamorfica.wikipedia;
+                textos[28].text = metamorfica.museuUnesp;
+                textos[30].text = metamorfica.outro;
+
+                for (int i = 22; i <= 30; i = i + 2)
+                {
+                    if (textos[i].text == "-")
+                    {
+                        textos[i].color = new Color(7f / 255f, 0f / 255f, 0f / 255f, 255f / 255f);
+                        textos[i].fontStyle = FontStyles.Normal;
+                    }
+                    else
+                    {
+                        textos[i].color = Color.blue;
+                        textos[i].fontStyle = FontStyles.Underline;
+                    }
+                }
+
+                AjustarTextos(informacoesMetamórficas);
+                AjustarScrollView(contentMetamórficas, informacoesMetamórficas);
+                cameraPrincipal.transform.localPosition = new Vector3(-8000f, cameraPrincipal.transform.localPosition.y, cameraPrincipal.transform.localPosition.z);
                 break;
         }
     }
 
-     IEnumerator DelayedAdjustment(GameObject informacoes, GameObject content)
-    {
-        // Wait for the end of the frame to ensure all UI updates are completed
-        yield return new WaitForEndOfFrame();
-        yield return new WaitForEndOfFrame();
-        AjustarTextos(informacoes);
-        AdjustSizeScrollview(content, informacoes);
-    }
-
-    void AdjustSizeScrollview(GameObject content, GameObject modelo)
+    void AjustarScrollView(GameObject content, GameObject modelo)
     {
         int index = 0;
 
@@ -257,7 +308,8 @@ public class AbrirInformacoes : MonoBehaviour
         float top = contentRect.localPosition.y + (contentRect.rect.height/2);
 
         Transform ultimoObjetoModelo = modelo.transform.GetChild(index);
-        float bottom = ultimoObjetoModelo.localPosition.y;
+        RectTransform rectUltimoObjetoModelo = ultimoObjetoModelo.GetComponent<RectTransform>();
+        float bottom = ultimoObjetoModelo.localPosition.y - (rectUltimoObjetoModelo.rect.height/2);
 
         float distance = Math.Abs(top - bottom);
 
@@ -268,6 +320,7 @@ public class AbrirInformacoes : MonoBehaviour
     void AjustarTextos(GameObject informacoes)
     {
         int espacamentoVertical = 4;
+        int espaçamentoImagem = 28;
         List<RectTransform> listaObjetos = new List<RectTransform>();
         
         foreach (RectTransform child in informacoes.GetComponent<RectTransform>())
@@ -277,7 +330,7 @@ public class AbrirInformacoes : MonoBehaviour
 
         TMP_Text[] textos = informacoes.GetComponentsInChildren<TMP_Text>();
 
-        for (int i = 6; i < listaObjetos.Count; i++)
+        for (int i = 2; i < listaObjetos.Count; i++)
         {
             RectTransform objetoAnterior = listaObjetos[i - 1];
             AjustarRectParaTexto(objetoAnterior);
@@ -293,8 +346,16 @@ public class AbrirInformacoes : MonoBehaviour
             float alturaAtual = objetoAtual.rect.height;
             float larguraAtual = objetoAtual.rect.width;
 
-            float posiçãoNovaY = posiçãoAnteriorY - (alturaAnterior / 2) - espacamentoVertical - (alturaAtual/2);
-            objetoAtual.localPosition = new Vector3(posiçãoAtual.x, posiçãoNovaY, posiçãoAtual.z);
+            if (listaObjetos[i-1].name == "Image" || listaObjetos[i].name == "Image")
+            {
+                float posiçãoNovaY = posiçãoAnteriorY - (alturaAnterior / 2) - espaçamentoImagem - (alturaAtual / 2);
+                objetoAtual.localPosition = new Vector3(posiçãoAtual.x, posiçãoNovaY, posiçãoAtual.z);
+            }
+            else
+            {
+                float posiçãoNovaY = posiçãoAnteriorY - (alturaAnterior / 2) - espacamentoVertical - (alturaAtual / 2);
+                objetoAtual.localPosition = new Vector3(posiçãoAtual.x, posiçãoNovaY, posiçãoAtual.z);
+            }
         }
     }
 
