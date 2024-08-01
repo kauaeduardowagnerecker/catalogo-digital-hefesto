@@ -7,13 +7,11 @@ public class AbrirSites : MonoBehaviour
 {
     // URL do website para redirecionar
     public string url;
-    // Referência ao ícone
-    public Button ícone;
 
     void Start()
     {
         // Obtém o componente Button anexado ao GameObject
-        Button botao = ícone.GetComponent<Button>();
+        Button botao = gameObject.GetComponent<Button>();
 
         // Verifica se o componente Button está presente
         if (botao != null)
