@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class FiltroPorTipo : MonoBehaviour
 {
@@ -12,36 +13,37 @@ public class FiltroPorTipo : MonoBehaviour
     public Toggle filtro1;
     public Toggle filtro2;
     public Toggle filtro3;
-    public InputField inputField;
+    public GameObject barraDePesquisa;
     public Pesquisa scriptPesquisa;
 
     private Toggle filtro;
+    private TMP_InputField inputPesquisa;
 
-    // Start is called before the first frame update
-    void Start()
+    void OnEnable()
     {
         filtro = gameObject.GetComponent<Toggle>();
-
-        filtro.onValueChanged.AddListener(delegate { Filtro(); });
+        inputPesquisa = barraDePesquisa.GetComponent<TMP_InputField>();
     }
 
-    void Filtro()
+    public void Filtro(string tipo)
     {
         if (filtro.isOn)
         {
             FiltrarPorTipo(tipo);
+            DesativarEReposicionarBotões();
+            scriptPesquisa.Pesquisar(inputPesquisa.text);
         }
         else
         {
             ReverterFiltro(tipo);
+            DesativarEReposicionarBotões();
+            scriptPesquisa.Pesquisar(inputPesquisa.text);
         }
-
-        scriptPesquisa.Pesquisar(inputField.text);
-        DesativarEReposicionarBotões();
     }
 
-    void FiltrarPorTipo(string tipo)
+    public void FiltrarPorTipo(string tipo)
     {
+        Debug.Log("A");
         int quantidade_renderizada = 0;
 
         foreach (string key in LeitorDeDados.botaoRenderizado.Keys.ToList<string>())
@@ -51,18 +53,20 @@ public class FiltroPorTipo : MonoBehaviour
                 quantidade_renderizada = quantidade_renderizada + 1;
             }
         }
-
-        if (quantidade_renderizada == LeitorDeDados.botoesRochasMinerais.Count)
+        Debug.Log(quantidade_renderizada);
+        if (quantidade_renderizada == LeitorDeDados.listaDeNomesDeRochasEMinerais.Count)
         {
-            foreach (string name in LeitorDeDados.listaDeNomesBotoesRenderizados)
+            Debug.Log("Condição satisfeita");
+            foreach (string name in LeitorDeDados.botaoRenderizado.Keys.ToList<string>())
             {
                 LeitorDeDados.botaoRenderizado[name] = (LeitorDeDados.tiposRochasMinerais[name] == tipo);
+                Debug.Log(LeitorDeDados.botaoRenderizado[name] + tipo);
             }
         }
 
         else
         {
-            foreach (string name in LeitorDeDados.listaDeNomesBotoesRenderizados)
+            foreach (string name in LeitorDeDados.botaoRenderizado.Keys.ToList<string>())
             {
                 if (LeitorDeDados.tiposRochasMinerais[name] == tipo)
                 {
@@ -85,33 +89,36 @@ public class FiltroPorTipo : MonoBehaviour
                 rectBotao.localPosition = new Vector3(rectBotao.localPosition.x, (-i * 230) - 114.5f);
 
                 i++;
+                Debug.Log("Ativado");
             }
             else
             {
+                Debug.Log("Desativado");
                 LeitorDeDados.botaoDictGameObjectRochasMinerais[key].SetActive(false);
             }
         }
     }
 
-    void ReverterFiltro(string tipo)
+    public void ReverterFiltro(string tipo)
     {
-        bool result = (filtro.isOn && !filtro1.isOn && !filtro2.isOn && !filtro3.isOn) ||
-              (!filtro.isOn && filtro1.isOn && !filtro2.isOn && !filtro3.isOn) ||
-              (!filtro.isOn && !filtro1.isOn && filtro2.isOn && !filtro3.isOn) ||
-              (!filtro.isOn && !filtro1.isOn && !filtro2.isOn && filtro3.isOn);
+        bool result = (!filtro.isOn && !filtro1.isOn && !filtro2.isOn && !filtro3.isOn);
 
         if (result)
         {
-            foreach (string name in LeitorDeDados.listaDeNomesBotoesRenderizados)
+            Debug.Log("A");
+            foreach (string name in LeitorDeDados.listaDeNomesDeRochasEMinerais)
             {
                 LeitorDeDados.botaoRenderizado[name] = true;
             }
         }
         else
         {
-            foreach (string name in LeitorDeDados.listaDeNomesBotoesRenderizados)
+            foreach (string name in LeitorDeDados.listaDeNomesDeRochasEMinerais)
             {
-                LeitorDeDados.botaoRenderizado[name] = (tipo == LeitorDeDados.tiposRochasMinerais[name]);
+                if (LeitorDeDados.tiposRochasMinerais[name] == tipo)
+                {
+                    LeitorDeDados.botaoRenderizado[name] = !(tipo == LeitorDeDados.tiposRochasMinerais[name]);
+                }
             }
         }
     }

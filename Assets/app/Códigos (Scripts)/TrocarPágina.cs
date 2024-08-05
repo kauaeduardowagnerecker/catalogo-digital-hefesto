@@ -7,11 +7,12 @@ using UnityEngine.UI;
 
 public class TrocarPagina : MonoBehaviour
 {
-    public string paginaAlvo;
-    public string paginaAtual;
+    public GameObject paginaAlvo;
+    public GameObject paginaAtual;
     public GameObject botao;
     public Animator animadorMenu;
-    public Animator animadorCamera;
+    public float coordenadaX;
+    public GameObject mainCamera;
 
     void Start()
     {
@@ -23,13 +24,12 @@ public class TrocarPagina : MonoBehaviour
     {
         if (paginaAlvo != paginaAtual)
         {
-            SceneManager.LoadSceneAsync(paginaAlvo);
-            SceneManager.UnloadSceneAsync(paginaAtual);
+            paginaAlvo.SetActive(true);
+            paginaAtual.SetActive(false);
         }
         else
         {
             animadorMenu.Play("FecharMenu");
-            animadorCamera.Play("ClarearFundo");
         }
     }
 }

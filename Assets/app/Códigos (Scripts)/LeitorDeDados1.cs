@@ -357,6 +357,7 @@ public class LeitorDeDados1 : MonoBehaviour
         RectTransform tamanhoDaLista = containerDosItens.GetComponent<RectTransform>();
         float tamanhoEscalonado = 235f * (tamanhoDaTabelaMinerais + tamanhoDaTabelaMetamorficas + tamanhoDaTabelaIgneas + tamanhoDaTabelaSedimentares);
         tamanhoDaLista.sizeDelta = new Vector2(tamanhoDaLista.sizeDelta.x, tamanhoEscalonado);
+        Debug.Log("Quantidade de rochas e minerais: " + (tamanhoDaTabelaMinerais + tamanhoDaTabelaMetamorficas + tamanhoDaTabelaIgneas + tamanhoDaTabelaSedimentares));
 
         Transform listaDosItens = containerDosItens.GetComponent<Transform>();
 
