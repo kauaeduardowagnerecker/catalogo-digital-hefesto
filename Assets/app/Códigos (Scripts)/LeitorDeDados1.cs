@@ -355,7 +355,8 @@ public class LeitorDeDados1 : MonoBehaviour
 
         // Ajustando o tamanho do ScrollView (Content).
         RectTransform tamanhoDaLista = containerDosItens.GetComponent<RectTransform>();
-        float tamanhoEscalonado = 235f * (tamanhoDaTabelaMinerais + tamanhoDaTabelaMetamorficas + tamanhoDaTabelaIgneas + tamanhoDaTabelaSedimentares);
+        float offset = 235f;
+        float tamanhoEscalonado = 235f * (tamanhoDaTabelaMinerais + tamanhoDaTabelaMetamorficas + tamanhoDaTabelaIgneas + tamanhoDaTabelaSedimentares) + offset;
         tamanhoDaLista.sizeDelta = new Vector2(tamanhoDaLista.sizeDelta.x, tamanhoEscalonado);
         Debug.Log("Quantidade de rochas e minerais: " + (tamanhoDaTabelaMinerais + tamanhoDaTabelaMetamorficas + tamanhoDaTabelaIgneas + tamanhoDaTabelaSedimentares));
 

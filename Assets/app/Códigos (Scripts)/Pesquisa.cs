@@ -23,15 +23,19 @@ public class Pesquisa : MonoBehaviour
     public void Pesquisar(string input)
     {
         int i = 0;
+        RectTransform rectContainerDosItens = LeitorDeDados.containerDosItens.GetComponent<RectTransform>();
+
         foreach (string name in LeitorDeDados.listaDeNomesDeRochasEMinerais)
         {
             string lowercaseName = name.ToLower();
             string lowercaseInput = input.ToLower();
+
+            RectTransform rectBotao = LeitorDeDados.botoesRochasMinerais[name];
+
             if (LeitorDeDados.botaoRenderizado[name] && lowercaseName.Contains(lowercaseInput))
             {
                 LeitorDeDados.botaoDictGameObjectRochasMinerais[name].SetActive(true);
 
-                RectTransform rectBotao = LeitorDeDados.botoesRochasMinerais[name];
                 rectBotao.localPosition = new Vector3(rectBotao.localPosition.x, (-i * 230) - 114.5f);
 
                 i++;
@@ -41,5 +45,8 @@ public class Pesquisa : MonoBehaviour
                 LeitorDeDados.botaoDictGameObjectRochasMinerais[name].SetActive(false);
             }
         }
+        float offset = 235f;
+        float tamanhoEscalonado = 235f * i + offset;
+        rectContainerDosItens.sizeDelta = new Vector2(rectContainerDosItens.sizeDelta.x, tamanhoEscalonado);
     }
 }

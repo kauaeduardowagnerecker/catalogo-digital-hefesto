@@ -79,6 +79,8 @@ public class FiltroPorTipo : MonoBehaviour
     public void DesativarEReposicionarBotões()
     {
         int i = 0;
+        RectTransform rectContainerDosItens = LeitorDeDados.containerDosItens.GetComponent<RectTransform>();
+
         foreach (string key in LeitorDeDados.botaoRenderizado.Keys.ToList<string>())
         {
             if (LeitorDeDados.botaoRenderizado[key])
@@ -97,6 +99,10 @@ public class FiltroPorTipo : MonoBehaviour
                 LeitorDeDados.botaoDictGameObjectRochasMinerais[key].SetActive(false);
             }
         }
+
+        float offset = 235f;
+        float tamanhoEscalonado = 235f * i + offset;
+        rectContainerDosItens.sizeDelta = new Vector2(rectContainerDosItens.sizeDelta.x, tamanhoEscalonado);
     }
 
     public void ReverterFiltro(string tipo)
