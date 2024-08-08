@@ -301,7 +301,7 @@ public class AbrirInformacoes : MonoBehaviour
         index = modelo.transform.childCount - 1;
 
         RectTransform contentRect = content.GetComponent<RectTransform>();
-        float top = contentRect.localPosition.y + (contentRect.rect.height/2);
+        float top = 50;
 
         Transform ultimoObjetoModelo = modelo.transform.GetChild(index);
         RectTransform rectUltimoObjetoModelo = ultimoObjetoModelo.GetComponent<RectTransform>();
@@ -325,6 +325,10 @@ public class AbrirInformacoes : MonoBehaviour
         }
 
         TMP_Text[] textos = informacoes.GetComponentsInChildren<TMP_Text>();
+
+        RectTransform primeiroItem = listaObjetos[1];
+        AjustarRectParaTexto(primeiroItem);
+        primeiroItem.localPosition = new Vector3(primeiroItem.localPosition.x, 50 - (primeiroItem.rect.height/2f), primeiroItem.localPosition.z);
 
         for (int i = 2; i < listaObjetos.Count; i++)
         {

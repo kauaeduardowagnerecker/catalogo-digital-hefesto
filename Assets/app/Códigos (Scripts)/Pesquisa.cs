@@ -36,8 +36,6 @@ public class Pesquisa : MonoBehaviour
             {
                 LeitorDeDados.botaoDictGameObjectRochasMinerais[name].SetActive(true);
 
-                rectBotao.localPosition = new Vector3(rectBotao.localPosition.x, (-i * 230) - 114.5f);
-
                 i++;
             }
             else
@@ -48,5 +46,16 @@ public class Pesquisa : MonoBehaviour
         float offset = 235f;
         float tamanhoEscalonado = 235f * i + offset;
         rectContainerDosItens.sizeDelta = new Vector2(rectContainerDosItens.sizeDelta.x, tamanhoEscalonado);
+        
+        int z = 0;
+        foreach (string name in LeitorDeDados.listaDeNomesDeRochasEMinerais)
+        {
+            if (LeitorDeDados.botaoDictGameObjectRochasMinerais[name].activeSelf)
+            {
+                RectTransform rectBotao = LeitorDeDados.botoesRochasMinerais[name];
+                rectBotao.localPosition = new Vector3(rectBotao.localPosition.x, (-z * 230) - 114.5f, rectBotao.localPosition.z);
+                z++;
+            }
+        }
     }
 }

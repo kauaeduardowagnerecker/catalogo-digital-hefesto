@@ -7,8 +7,7 @@ public class AbrirBarraDePesquisa : MonoBehaviour
 {
     // Assign these in the Inspector
     public GameObject barraDePesquisa;
-    public GameObject filtroAZ;
-    public GameObject filtroZA;
+    public GameObject filtroAlfabético;
     public GameObject filtroGeral;
 
     // Reference to the Toggle component
@@ -32,24 +31,13 @@ public class AbrirBarraDePesquisa : MonoBehaviour
         // Manage the states of filtroAZ, filtroZA, and filtroGeral
         if (isActive)
         {
-            filtroAZ.SetActive(false);
-            filtroZA.SetActive(false);
+            filtroAlfabético.SetActive(false);
             filtroGeral.SetActive(false);
         }
         else
         {
-            filtroAZ.SetActive(true);
+            filtroAlfabético.SetActive(true);
             filtroGeral.SetActive(true);
-
-            // Only activate filtroZA if filtroAZ is not active
-            if (!filtroAZ.activeSelf)
-            {
-                filtroZA.SetActive(true);
-            }
-            else
-            {
-                filtroZA.SetActive(false);
-            }
         }
     }
 }
