@@ -132,10 +132,9 @@ public class AbrirInformacoes : MonoBehaviour
                 textos[53].text = mineral.museuhe;
                 textos[55].text = mineral.uspgeociencias;
                 textos[57].text = mineral.minmicro;
-                textos[59].text = mineral.wikipedia;
-                textos[61].text = mineral.outro;
+                textos[59].text = mineral.outro;
 
-                for (int i = 53; i <= 61; i = i + 2)
+                for (int i = 53; i <= 59; i = i + 2)
                 {
                     if (textos[i].text == "-")
                     {
@@ -175,10 +174,9 @@ public class AbrirInformacoes : MonoBehaviour
                 textos[22].text = rochaIgnea.doacao;
                 textos[25].text = rochaIgnea.museuhe;
                 textos[27].text = rochaIgnea.uspgeociencias;
-                textos[29].text = rochaIgnea.wikipedia;
-                textos[31].text = rochaIgnea.outro;
+                textos[29].text = rochaIgnea.outro;
 
-                for (int i = 25; i <= 31; i = i + 2)
+                for (int i = 25; i <= 29; i = i + 2)
                 {
                     if (textos[i].text == "-")
                     {
@@ -220,11 +218,10 @@ public class AbrirInformacoes : MonoBehaviour
                 textos[27].text = rochaSedimentar.doacao;
                 textos[30].text = rochaSedimentar.museuhe;
                 textos[32].text = rochaSedimentar.uspgeociencias;
-                textos[34].text = rochaSedimentar.wikipedia;
-                textos[36].text = rochaSedimentar.outro;
-                textos[37].text = rochaSedimentar.outro2;
+                textos[34].text = rochaSedimentar.outro;
+                textos[35].text = rochaSedimentar.outro2;
 
-                for (int i = 30; i <= 36; i = i + 2)
+                for (int i = 30; i <= 34; i = i + 2)
                 {
                     if (textos[i].text == "-")
                     {
@@ -273,11 +270,10 @@ public class AbrirInformacoes : MonoBehaviour
                 textos[19].text = metamorfica.doacao;
                 textos[22].text = metamorfica.museuhe;
                 textos[24].text = metamorfica.uspgeociencias;
-                textos[26].text = metamorfica.wikipedia;
-                textos[28].text = metamorfica.museuUnesp;
-                textos[30].text = metamorfica.outro;
+                textos[26].text = metamorfica.museuUnesp;
+                textos[28].text = metamorfica.outro;
 
-                for (int i = 22; i <= 30; i = i + 2)
+                for (int i = 22; i <= 28; i = i + 2)
                 {
                     if (textos[i].text == "-")
                     {
