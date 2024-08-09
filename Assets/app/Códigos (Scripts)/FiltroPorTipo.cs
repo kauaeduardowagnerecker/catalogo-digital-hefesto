@@ -100,8 +100,7 @@ public class FiltroPorTipo : MonoBehaviour
             }
         }
 
-        float offset = 235f;
-        float tamanhoEscalonado = 235f * i + offset;
+        float tamanhoEscalonado = 226f * i - 200f;
         rectContainerDosItens.sizeDelta = new Vector2(rectContainerDosItens.sizeDelta.x, tamanhoEscalonado);
     }
 

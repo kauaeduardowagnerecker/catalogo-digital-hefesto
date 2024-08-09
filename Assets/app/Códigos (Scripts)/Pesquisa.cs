@@ -32,7 +32,7 @@ public class Pesquisa : MonoBehaviour
 
             RectTransform rectBotao = LeitorDeDados.botoesRochasMinerais[name];
 
-            if (LeitorDeDados.botaoRenderizado[name] && lowercaseName.Contains(lowercaseInput))
+            if (LeitorDeDados.botaoRenderizado[name] && lowercaseName.StartsWith(lowercaseInput))
             {
                 LeitorDeDados.botaoDictGameObjectRochasMinerais[name].SetActive(true);
 
@@ -43,8 +43,7 @@ public class Pesquisa : MonoBehaviour
                 LeitorDeDados.botaoDictGameObjectRochasMinerais[name].SetActive(false);
             }
         }
-        float offset = 235f;
-        float tamanhoEscalonado = 235f * i + offset;
+        float tamanhoEscalonado = (226f * i) - 200f;
         rectContainerDosItens.sizeDelta = new Vector2(rectContainerDosItens.sizeDelta.x, tamanhoEscalonado);
         
         int z = 0;

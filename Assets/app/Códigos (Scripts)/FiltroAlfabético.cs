@@ -42,7 +42,7 @@ public class FiltroAlfabético : MonoBehaviour
 
         foreach (string nome in leitorDeDados.listaDeNomesDeRochasEMinerais)
         {
-            if (leitorDeDados.botaoRenderizado[nome])
+            if (leitorDeDados.botaoRenderizado[nome] && leitorDeDados.botaoDictGameObjectRochasMinerais[nome].activeSelf)
             {
                 RectTransform botao = leitorDeDados.botoesRochasMinerais[nome];
                 botao.localPosition = new Vector2(botao.localPosition.x, (-i * 230) - 114.5f);
@@ -64,7 +64,7 @@ public class FiltroAlfabético : MonoBehaviour
 
         foreach (string nome in leitorDeDados.listaDeNomesDeRochasEMinerais)
         {
-            if (leitorDeDados.botaoRenderizado[nome])
+            if (leitorDeDados.botaoRenderizado[nome] && leitorDeDados.botaoDictGameObjectRochasMinerais[nome].activeSelf)
             {
                 RectTransform botao = leitorDeDados.botoesRochasMinerais[nome];
                 botao.localPosition = new Vector2(botao.localPosition.x, (-i * 230) - 114.5f);

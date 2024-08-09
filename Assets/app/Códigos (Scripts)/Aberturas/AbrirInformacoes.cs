@@ -309,7 +309,7 @@ public class AbrirInformacoes : MonoBehaviour
 
         float distance = Math.Abs(top - bottom);
 
-        contentRect.sizeDelta = new Vector2(contentRect.sizeDelta.x, distance);
+        contentRect.sizeDelta = new Vector2(contentRect.sizeDelta.x, distance - 500);
 
     }
 

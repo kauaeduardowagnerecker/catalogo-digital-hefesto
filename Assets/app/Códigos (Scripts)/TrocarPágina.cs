@@ -25,6 +25,7 @@ public class TrocarPagina : MonoBehaviour
         if (paginaAlvo != paginaAtual)
         {
             paginaAlvo.SetActive(true);
+            mainCamera.transform.localPosition = new Vector3(coordenadaX, mainCamera.transform.localPosition.y, mainCamera.transform.localPosition.z);
             paginaAtual.SetActive(false);
         }
         else
