@@ -301,7 +301,7 @@ public class AbrirInformacoes : MonoBehaviour
         index = modelo.transform.childCount - 1;
 
         RectTransform contentRect = content.GetComponent<RectTransform>();
-        float top = 50;
+        float top = contentRect.localPosition.y + (contentRect.rect.height/2);
 
         Transform ultimoObjetoModelo = modelo.transform.GetChild(index);
         RectTransform rectUltimoObjetoModelo = ultimoObjetoModelo.GetComponent<RectTransform>();
