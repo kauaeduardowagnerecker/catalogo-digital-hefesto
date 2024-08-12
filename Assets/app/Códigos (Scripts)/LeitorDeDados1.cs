@@ -73,6 +73,13 @@ public class LeitorDeDados1 : MonoBehaviour
      */
 
     [System.Serializable]
+    public class Definição
+    {
+        public string verbete;
+        public string conceito;
+    }
+
+    [System.Serializable]
     public class RochaMetamorfica
     {
         public string nomeFoto;

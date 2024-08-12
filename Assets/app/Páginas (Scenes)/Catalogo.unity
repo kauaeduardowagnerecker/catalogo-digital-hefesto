@@ -2798,7 +2798,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -12.000458, y: -898.00024}
+  m_AnchoredPosition: {x: -12.000458, y: -1176}
   m_SizeDelta: {x: 536.04, y: 565.96}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &257092288
@@ -4360,9 +4360,12 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_text: "Agradecemos especialmente essas pessoas que contribu\xEDram de alguma
-    maneira para a realiza\xE7\xE3o desse projeto:\n\nIago Tonietto Siqueira;\nLarissa
-    D'\xC1vila Farias;\nFrank Heinrich;\nRuan Pablo Oliveira da Cruz;\nSamara Fasoli
-    Grazziotin Carvalho;\nLaura dos Passos Albano;\nLaura da Rocha Macedo;"
+    maneira para a realiza\xE7\xE3o desse projeto:\n\n<b>Especialistas</b>\nProf.
+    Dr. Frank Heinrich\nDra. Amanda Sagrilo\nProf. Dra. Kelen B. de Melo\nProf. Dr.
+    Celso Roman Jr.\nProf. Dra. Fabiana L. da Silva.\n\n<b>Estudantes do IFRS:</b>\nEduarda
+    M. M. Herzog\nIago Tonietto Siqueira\nLaura da Rocha Macedo\nLaura dos Passos
+    Albano\nLarissa D'\xC1vila Farias\nMauro Emer de Vargas\nRuan P. Oliveira da
+    Cruz\nSamara F. G. Carvalho."
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: d3e2ec91e74f75f4f85731a031cfbb62, type: 2}
   m_sharedMaterial: {fileID: 5143351086898710652, guid: d3e2ec91e74f75f4f85731a031cfbb62, type: 2}
@@ -4389,8 +4392,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 36
-  m_fontSizeBase: 36
+  m_fontSize: 34
+  m_fontSizeBase: 34
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -4968,7 +4971,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -0.0000104904175, y: 121.99951}
+  m_AnchoredPosition: {x: 10.419441, y: 116.99951}
   m_SizeDelta: {x: 464.13, y: 179.81}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &389968514
@@ -6206,7 +6209,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 18, y: -0.0006556501}
+  m_AnchoredPosition: {x: 18, y: 3037.5005}
   m_SizeDelta: {x: 0, y: 4123.43}
   m_Pivot: {x: 0, y: 1}
 --- !u!1 &465609642
@@ -6512,8 +6515,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4294901760
-  m_fontColor: {r: 0, g: 0, b: 1, a: 1}
+    rgba: 4279906575
+  m_fontColor: {r: 0.058823533, g: 0.19215688, b: 0.10196079, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -7054,7 +7057,7 @@ Transform:
   m_GameObject: {fileID: 519420028}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -11768.711}
+  m_LocalPosition: {x: 4935, y: 0, z: -11768.711}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -7224,7 +7227,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -31.040009, y: 665.4155}
+  m_AnchoredPosition: {x: -20, y: 1759}
   m_SizeDelta: {x: 574.12, y: 565.96}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &528282777
@@ -10212,7 +10215,7 @@ GameObject:
   - component: {fileID: 764293651}
   - component: {fileID: 764293650}
   m_Layer: 5
-  m_Name: "Filia\xE7\xE3o"
+  m_Name: DadosProjeto
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -10230,15 +10233,15 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 1661673520}
-  - {fileID: 976832696}
-  - {fileID: 1864297401}
   - {fileID: 389968513}
+  - {fileID: 1864297401}
+  - {fileID: 976832696}
+  - {fileID: 1661673520}
   m_Father: {fileID: 455250492}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -10.581, y: 1762.4152}
+  m_AnchoredPosition: {x: -21, y: 208.00012}
   m_SizeDelta: {x: 533.2, y: 565.96}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &764293650
@@ -10261,7 +10264,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "Filia\xE7\xE3o"
+  m_text: Dados do Projeto
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: d3e2ec91e74f75f4f85731a031cfbb62, type: 2}
   m_sharedMaterial: {fileID: 5143351086898710652, guid: d3e2ec91e74f75f4f85731a031cfbb62, type: 2}
@@ -11732,8 +11735,8 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 612703731}
   m_HandleRect: {fileID: 612703730}
   m_Direction: 3
-  m_Value: 1.0000001
-  m_Size: 0.26335603
+  m_Value: -0.00000024112657
+  m_Size: 0.26335397
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -12318,7 +12321,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -30.029999, y: -521.5801}
+  m_AnchoredPosition: {x: -30.029999, y: 600}
   m_SizeDelta: {x: 499.99, y: 565.96}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &966545200
@@ -12588,7 +12591,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -6.54, y: -583.0005}
+  m_AnchoredPosition: {x: 3.879465, y: -588.00037}
   m_SizeDelta: {x: 451.04, y: 565.96}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &976832697
@@ -14173,9 +14176,10 @@ MonoBehaviour:
       m_Calls: []
   m_text: "<b>Desenvolvimento</b>:\nKau\xE3 E. W. Ecker\n\n<b>Textos e fotografia</b>:\nLuz
     Santini Reinheimer\n\n<b>Layout</b>: \nLuz Santini Reinheimer;\nKau\xE3 E. W.
-    Ecker;\nLanna Ester Kremer da Rosa\n\n<b>Revis\xE3o de Acessibilidade</b>:\nSophia
-    Souza Rachinhas\n\n<b>Revis\xE3o T\xE9cnica</b>:\nProf. Dr. Alfredo Costa\n\n<b>Coordena\xE7\xE3o</b>:\nProf.
-    Dr. Alfredo Costa"
+    Ecker;\nLanna Ester Kremer da Rosa\n\n<b>Assessoria T\xE9cnica</b>\nGuilherme
+    Sch\xE4effer Schulze\n \n<b>Revis\xE3o de Acessibilidade</b>:\nSophia Souza Rachinhas\n\n<b>Revis\xE3o
+    T\xE9cnica</b>:\nProf. Dr. Alfredo Costa\n\n<b>Revis\xE3o Textual</b>:\nProf.
+    Dr. Alfredo Costa\n\n<b>Coordena\xE7\xE3o</b>:\nProf. Dr. Alfredo Costa"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: d3e2ec91e74f75f4f85731a031cfbb62, type: 2}
   m_sharedMaterial: {fileID: 5143351086898710652, guid: d3e2ec91e74f75f4f85731a031cfbb62, type: 2}
@@ -16241,8 +16245,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4294901760
-  m_fontColor: {r: 0, g: 0, b: 1, a: 1}
+    rgba: 4279906575
+  m_fontColor: {r: 0.058823533, g: 0.19215688, b: 0.10196079, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -18319,8 +18323,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4294901760
-  m_fontColor: {r: 0, g: 0, b: 1, a: 1}
+    rgba: 4279906575
+  m_fontColor: {r: 0.058823533, g: 0.19215688, b: 0.10196079, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -18886,7 +18890,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -31.040009, y: -1514.0002}
+  m_AnchoredPosition: {x: -31.040009, y: -2467.9998}
   m_SizeDelta: {x: 480.5, y: 295.63}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1608985101
@@ -19559,7 +19563,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -6.5335, y: -612.82007}
+  m_AnchoredPosition: {x: 3.885067, y: -617.82}
   m_SizeDelta: {x: 451.03, y: 313.59}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1661673521
@@ -22393,7 +22397,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -17, y: -660}
+  m_AnchoredPosition: {x: -17, y: 452.00012}
   m_SizeDelta: {x: 536.04, y: 565.96}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1795620006
@@ -23329,7 +23333,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -0.0000104904175, y: -305}
+  m_AnchoredPosition: {x: 10.419441, y: -309.99994}
   m_SizeDelta: {x: 464.09, y: 565.96}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1864297402
@@ -24481,8 +24485,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4294901760
-  m_fontColor: {r: 0, g: 0, b: 1, a: 1}
+    rgba: 4279906575
+  m_fontColor: {r: 0.058823533, g: 0.19215688, b: 0.10196079, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -25175,7 +25179,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -23, y: -262}
+  m_AnchoredPosition: {x: -23, y: -905}
   m_SizeDelta: {x: 409.78, y: 565.96}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2014588904
