@@ -32,7 +32,7 @@ public class Pesquisa : MonoBehaviour
 
             RectTransform rectBotao = LeitorDeDados.botoesRochasMinerais[name];
 
-            if (LeitorDeDados.botaoRenderizado[name] && lowercaseName.StartsWith(lowercaseInput))
+            if (LeitorDeDados.botaoRenderizado[name] && lowercaseName.Contains(lowercaseInput))
             {
                 LeitorDeDados.botaoDictGameObjectRochasMinerais[name].SetActive(true);
 

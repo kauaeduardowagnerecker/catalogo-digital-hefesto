@@ -10,12 +10,15 @@ public class TrocarPagina : MonoBehaviour
     public GameObject paginaAlvo;
     public GameObject paginaAtual;
     public GameObject botao;
-    public Animator animadorMenu;
+    public GameObject menu;
     public float coordenadaX;
     public GameObject mainCamera;
 
+    private Animator animadorMenu;
+
     void Start()
     {
+        animadorMenu = menu.GetComponent<Animator>();
         Button trocador = botao.GetComponent<Button>();
         trocador.onClick.AddListener(TrocaDePagina);
     }
@@ -26,6 +29,7 @@ public class TrocarPagina : MonoBehaviour
         {
             paginaAlvo.SetActive(true);
             mainCamera.transform.localPosition = new Vector3(coordenadaX, mainCamera.transform.localPosition.y, mainCamera.transform.localPosition.z);
+            menu.transform.Translate(new Vector3(372, 0, 0));
             paginaAtual.SetActive(false);
         }
         else
