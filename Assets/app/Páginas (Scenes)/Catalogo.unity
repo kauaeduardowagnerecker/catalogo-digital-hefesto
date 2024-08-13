@@ -5418,27 +5418,27 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   containerDosItens: {fileID: 1822603889}
   cameraMain: {fileID: 519420028}
-  dadosMinerais: {fileID: 4900000, guid: 8a54458ed99ffca4ba92b08aa69a46a2, type: 3}
+  dadosMinerais: {fileID: 4900000, guid: 5d44546737817f74abd80c3303cc4dd8, type: 3}
   abaMinerais: {fileID: 512901295}
   num_colunasMinerais: 26
   prefabMinerais: {fileID: 5891470098386262717, guid: a69d7d304981d4e4dab238d4ef57d04c, type: 3}
   minInformacoes: {fileID: 1177175169537813564}
   minContent: {fileID: 1951155804}
-  dadosIgneas: {fileID: 4900000, guid: b7c81615a77770b4e9d7190f96483529, type: 3}
+  dadosIgneas: {fileID: 4900000, guid: 0968910075260574196cc6a6ccd319c5, type: 3}
   abaIgneas: {fileID: 28524425}
   num_colunasIgneas: 15
   prefabIgneas: {fileID: 1299458206403671011, guid: 7372e521372013c4db6673bac57f48ce, type: 3}
   igneasInformacoes: {fileID: 1177175168584092039}
   igneasContent: {fileID: 1758636052}
-  dadosMetamorficas: {fileID: 4900000, guid: 90b2a653246932841b8e99ea582bed0a, type: 3}
+  dadosMetamorficas: {fileID: 4900000, guid: fa89a14cec3eb4d4aaf554ad93a00c44, type: 3}
   abaMetamorficas: {fileID: 126571320}
   num_colunasMetamorficas: 15
   prefabMetamorficas: {fileID: 8651845532780152554, guid: 93c5e43567d17e042877dc610a9427ab, type: 3}
   metamorficasInformacoes: {fileID: 7822978200665394537}
   metamorficasContent: {fileID: 70960079}
-  dadosSedimentares: {fileID: 4900000, guid: 19b7febed0809f74bb33cdc5dcad214f, type: 3}
+  dadosSedimentares: {fileID: 4900000, guid: 561e89820b4afa54c9dab13bccec1a57, type: 3}
   abaSedimentares: {fileID: 424297434}
-  num_colunasSedimentares: 17
+  num_colunasSedimentares: 16
   prefabSedimentares: {fileID: 2517737295189297492, guid: d677fc7e791ceaf419f96f25ba5e3069, type: 3}
   sedimentaresInformacoes: {fileID: 6413838677141651302}
   sedimentaresContent: {fileID: 1649757812}
@@ -6209,7 +6209,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 18, y: 3037.5005}
+  m_AnchoredPosition: {x: 18, y: 0.000025992653}
   m_SizeDelta: {x: 0, y: 4123.43}
   m_Pivot: {x: 0, y: 1}
 --- !u!1 &465609642
@@ -7057,7 +7057,7 @@ Transform:
   m_GameObject: {fileID: 519420028}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 4935, y: 0, z: -11768.711}
+  m_LocalPosition: {x: 0, y: 0, z: -11768.711}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -11735,8 +11735,8 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 612703731}
   m_HandleRect: {fileID: 612703730}
   m_Direction: 3
-  m_Value: -0.00000024112657
-  m_Size: 0.26335397
+  m_Value: 1
+  m_Size: 0.26335603
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:

@@ -27,12 +27,12 @@ public class Pesquisa : MonoBehaviour
 
         foreach (string name in LeitorDeDados.listaDeNomesDeRochasEMinerais)
         {
-            string lowercaseName = name.ToLower();
-            string lowercaseInput = input.ToLower();
+            string processedName = RemoverAcentuação(name.ToLower());
+            string processedInput = RemoverAcentuação(input.ToLower());
 
             RectTransform rectBotao = LeitorDeDados.botoesRochasMinerais[name];
 
-            if (LeitorDeDados.botaoRenderizado[name] && lowercaseName.Contains(lowercaseInput))
+            if (LeitorDeDados.botaoRenderizado[name] && processedName.Contains(processedInput))
             {
                 LeitorDeDados.botaoDictGameObjectRochasMinerais[name].SetActive(true);
 
@@ -57,4 +57,41 @@ public class Pesquisa : MonoBehaviour
             }
         }
     }
+
+    string RemoverAcentuação(string input)
+    {
+        string correctedInput = "";
+
+        if (input == null)
+        {
+            return null;
+        }
+
+        Dictionary<char, char> AccentMap = new Dictionary<char, char>
+        {
+        {'á', 'a'}, {'à', 'a'}, {'â', 'a'}, {'ä', 'a'}, {'ã', 'a'}, {'å', 'a'},
+        {'é', 'e'}, {'è', 'e'}, {'ê', 'e'}, {'ë', 'e'},
+        {'í', 'i'}, {'ì', 'i'}, {'î', 'i'}, {'ï', 'i'},
+        {'ó', 'o'}, {'ò', 'o'}, {'ô', 'o'}, {'ö', 'o'}, {'õ', 'o'},
+        {'ú', 'u'}, {'ù', 'u'}, {'û', 'u'}, {'ü', 'u'},
+        {'ç', 'c'},
+        {'ñ', 'n'}
+        };
+
+        HashSet<char> keysSet = AccentMap.Keys.ToHashSet();
+
+        for (int i = 0; i < input.Length; i++)
+        {
+            if (keysSet.Contains(input[i]))
+            {
+                correctedInput += AccentMap[input[i]];
+            }
+            else
+            {
+                correctedInput += input[i];
+            }
+        }
+
+        return correctedInput;
+}
 }

@@ -399,7 +399,7 @@ public class LeitorDeDados1 : MonoBehaviour
 
             textoNome.SetText(ListaMinerais.catalogoMinerais[z].nomeTecnico);
             textoTipo.SetText(ListaMinerais.catalogoMinerais[z].tipo);
-            componenteImagemFoto.sprite = Resources.Load<Sprite>("Amianto Crisotila");
+            componenteImagemFoto.sprite = Resources.Load<Sprite>(ListaMinerais.catalogoMinerais[z].nomeTecnico);
 
             botoesRochasMinerais.Add(item1.name, retanguloItem);
             botaoRenderizado.Add(item1.name, true);
@@ -415,7 +415,11 @@ public class LeitorDeDados1 : MonoBehaviour
             Transform nome = item2.transform.GetChild(0);
             TextMeshProUGUI textoNome = nome.GetComponent<TextMeshProUGUI>();
 
+            Transform foto = item2.transform.GetChild(3);
+            Image imagem = foto.GetComponent<Image>();
+
             textoNome.text = ListaMetamorficas.catalogoMetamorficas[z].nomeTecnico;
+            imagem.sprite = Resources.Load<Sprite>(ListaMetamorficas.catalogoMetamorficas[z].nomeTecnico);
 
             RectTransform rectPosicao = item2.GetComponent<RectTransform>();
             rectPosicao.localPosition = ultimaPosicao + new Vector2(0, 230 * -(z+1));
@@ -438,7 +442,11 @@ public class LeitorDeDados1 : MonoBehaviour
             Transform nome = item3.transform.GetChild(0);
             TextMeshProUGUI textoNome = nome.GetComponent<TextMeshProUGUI>();
 
+            Transform foto = item3.transform.GetChild(3);
+            Image imagem = foto.GetComponent<Image>();
+
             textoNome.text = ListaIgneas.catalogoIgneas[z].nomeTecnico;
+            imagem.sprite = Resources.Load<Sprite>(ListaIgneas.catalogoIgneas[z].nomeTecnico);
 
             RectTransform rectPosicao = item3.GetComponent<RectTransform>();
             rectPosicao.localPosition = ultimaPosicao + new Vector2(0, 230 * -(z+1));
@@ -464,7 +472,11 @@ public class LeitorDeDados1 : MonoBehaviour
             Transform nome = item4.transform.GetChild(0);
             TextMeshProUGUI textoNome = nome.GetComponent<TextMeshProUGUI>();
 
+            Transform foto = item4.transform.GetChild(3);
+            Image imagem = foto.GetComponent<Image>();
+
             textoNome.text = ListaSedimentares.catalogoSedimentares[z].nomeTecnico;
+            imagem.sprite = Resources.Load<Sprite>(ListaSedimentares.catalogoSedimentares[z].nomeTecnico);
 
             RectTransform rectPosicao = item4.GetComponent<RectTransform>();
             rectPosicao.localPosition = ultimaPosicao + new Vector2(0, 230 * -(z + 1));
