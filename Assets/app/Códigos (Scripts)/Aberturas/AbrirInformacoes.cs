@@ -9,7 +9,7 @@ using UnityEditor;
 using UnityEngine;
 using UnityEngine.UI;
 using static LeitorDeDados1;
-using static System.Net.Mime.MediaTypeNames;
+using Unity.VisualScripting;
 
 public class AbrirInformacoes : MonoBehaviour
 {
@@ -104,6 +104,9 @@ public class AbrirInformacoes : MonoBehaviour
                 indice = indices[itemPai.name];
                 Mineral mineral = ListaMinerais.catalogoMinerais[indice];
 
+                Transform foto4 = informacoesMinerais.transform.GetChild(3);
+                Image imagem4 = foto4.GetComponent<Image>();
+
                 // Preenche as caixas de texto.
                 textos[0].text = mineral.nomeTecnico;
                 textos[1].text = mineral.formula;
@@ -148,8 +151,11 @@ public class AbrirInformacoes : MonoBehaviour
                     }
                 }
 
-                AjustarTextos(informacoesMinerais);
+                imagem4.sprite = Resources.Load<Sprite>(mineral.nomeTecnico);
+
+                AjustarTextos(informacoesMinerais, contentMinerais, "Mineral");
                 AjustarScrollView(contentMinerais, informacoesMinerais);
+
                 cameraPrincipal.transform.localPosition = new Vector3(-2000f, cameraPrincipal.transform.localPosition.y, cameraPrincipal.transform.localPosition.z);
                 break;
 
@@ -159,6 +165,9 @@ public class AbrirInformacoes : MonoBehaviour
                 textos = informacoesIgneas.GetComponentsInChildren<TextMeshProUGUI>();
                 indice = indices[itemPai.name];
                 RochaIgnea rochaIgnea = ListaIgneas.catalogoIgneas[indice];
+
+                Transform foto3 = informacoesIgneas.transform.GetChild(3);
+                Image imagem3 = foto3.GetComponent<Image>();
 
                 textos[0].text = rochaIgnea.nomeTecnico;
                 textos[1].text = rochaIgnea.variacao;
@@ -190,8 +199,11 @@ public class AbrirInformacoes : MonoBehaviour
                     }
                 }
 
-                AjustarTextos(informacoesIgneas);
+                imagem3.sprite = Resources.Load<Sprite>(rochaIgnea.nomeTecnico);
+
+                AjustarTextos(informacoesIgneas, contentIgneas, "Ígnea");
                 AjustarScrollView(contentIgneas, informacoesIgneas);
+
                 cameraPrincipal.transform.localPosition = new Vector3(-4000f, cameraPrincipal.transform.localPosition.y, cameraPrincipal.transform.localPosition.z);
                 break;
 
@@ -201,6 +213,9 @@ public class AbrirInformacoes : MonoBehaviour
                 textos = informacoesSedimentares.GetComponentsInChildren<TextMeshProUGUI>();
                 indice = indices[itemPai.name];
                 RochaSedimentar rochaSedimentar = ListaSedimentares.catalogoSedimentares[indice];
+
+                Transform foto2 = informacoesSedimentares.transform.GetChild(3);
+                Image imagem2 = foto2.GetComponent<Image>();
 
                 textos[0].text = rochaSedimentar.nomeTecnico;
                 textos[1].text = rochaSedimentar.tipo;
@@ -235,19 +250,11 @@ public class AbrirInformacoes : MonoBehaviour
                     }
                 }
 
-                if (textos[37].text == "-")
-                {
-                    textos[37].color = new Color(7f / 255f, 0f / 255f, 0f / 255f, 255f / 255f);
-                    textos[37].fontStyle = FontStyles.Normal;
-                }
-                else
-                {
-                    textos[37].color = Color.blue;
-                    textos[37].fontStyle = FontStyles.Underline;
-                }
+                imagem2.sprite = Resources.Load<Sprite>(rochaSedimentar.nomeTecnico);
 
-                AjustarTextos(informacoesSedimentares);
+                AjustarTextos(informacoesSedimentares, contentSedimentares, "Sedimentar");
                 AjustarScrollView(contentSedimentares, informacoesSedimentares);
+
                 cameraPrincipal.transform.localPosition = new Vector3(-6000f, cameraPrincipal.transform.localPosition.y, cameraPrincipal.transform.localPosition.z);
                 break;
 
@@ -257,6 +264,9 @@ public class AbrirInformacoes : MonoBehaviour
                 indice = indices[itemPai.name];
                 textos = informacoesMetamórficas.GetComponentsInChildren<TextMeshProUGUI>();
                 RochaMetamorfica metamorfica = ListaMetamórficas.catalogoMetamorficas[indice];
+
+                Transform foto = informacoesMetamórficas.transform.GetChild(2);
+                Image imagem = foto.GetComponent<Image>();
 
                 textos[0].text = metamorfica.nomeTecnico;
                 textos[3].text = metamorfica.nomeTecnico;
@@ -287,8 +297,11 @@ public class AbrirInformacoes : MonoBehaviour
                     }
                 }
 
-                AjustarTextos(informacoesMetamórficas);
+                imagem.sprite = Resources.Load<Sprite>(metamorfica.nomeTecnico);
+
+                AjustarTextos(informacoesMetamórficas, contentMetamórficas, "Metamórfica");
                 AjustarScrollView(contentMetamórficas, informacoesMetamórficas);
+
                 cameraPrincipal.transform.localPosition = new Vector3(-8000f, cameraPrincipal.transform.localPosition.y, cameraPrincipal.transform.localPosition.z);
                 break;
         }
@@ -301,7 +314,9 @@ public class AbrirInformacoes : MonoBehaviour
         index = modelo.transform.childCount - 1;
 
         RectTransform contentRect = content.GetComponent<RectTransform>();
-        float top = contentRect.localPosition.y + (contentRect.rect.height/2);
+
+        RectTransform primeiroRect = content.transform.GetChild(0).GetComponent<RectTransform>();
+        float top = primeiroRect.localPosition.y + (primeiroRect.rect.height/2);
 
         Transform ultimoObjetoModelo = modelo.transform.GetChild(index);
         RectTransform rectUltimoObjetoModelo = ultimoObjetoModelo.GetComponent<RectTransform>();
@@ -309,15 +324,17 @@ public class AbrirInformacoes : MonoBehaviour
 
         float distance = Math.Abs(top - bottom);
 
-        contentRect.sizeDelta = new Vector2(contentRect.sizeDelta.x, distance - 500);
+        contentRect.sizeDelta = new Vector2(contentRect.sizeDelta.x, distance - 350);
 
     }
 
-    void AjustarTextos(GameObject informacoes)
+    void AjustarTextos(GameObject informacoes, GameObject content, string tipo)
     {
         int espacamentoVertical = 4;
         int espaçamentoImagem = 28;
         List<RectTransform> listaObjetos = new List<RectTransform>();
+
+        RectTransform rectContent = content.GetComponent<RectTransform>();
         
         foreach (RectTransform child in informacoes.GetComponent<RectTransform>())
         {
@@ -328,7 +345,23 @@ public class AbrirInformacoes : MonoBehaviour
 
         RectTransform primeiroItem = listaObjetos[1];
         AjustarRectParaTexto(primeiroItem);
-        primeiroItem.localPosition = new Vector3(primeiroItem.localPosition.x, 50 - (primeiroItem.rect.height/2f), primeiroItem.localPosition.z);
+        float posicaoPrimeiroItem = 0;
+        switch (tipo)
+        {
+            case "Mineral":
+                posicaoPrimeiroItem = 50f - (primeiroItem.rect.height / 2f);
+                break;
+            case "Sedimentar":
+                posicaoPrimeiroItem = 435f - (primeiroItem.rect.height / 2f);
+                break;
+            case "Ígnea":
+                posicaoPrimeiroItem = 443.1f - (primeiroItem.rect.height / 2f);
+                break;
+            case "Metamórfica":
+                posicaoPrimeiroItem = 426.81f - (primeiroItem.rect.height / 2f);
+                break;
+        }
+        primeiroItem.localPosition = new Vector3(primeiroItem.localPosition.x, posicaoPrimeiroItem, primeiroItem.localPosition.z);
 
         for (int i = 2; i < listaObjetos.Count; i++)
         {

@@ -339,7 +339,7 @@ public class LeitorDeDados1 : MonoBehaviour
             RochaSedimentar rochaSedimentar = ListaSedimentares.catalogoSedimentares[i];
 
             rochaSedimentar.nomeTecnico = listaDeDadosSedimentares[num_colunasSedimentares * (i + 1)];
-            rochaSedimentar.tipo = listaDeDadosSedimentares[num_colunasSedimentares * (i + 1) + 1];
+            rochaSedimentar.tipo = "Sedimentar";
             rochaSedimentar.tambemConhecidoPor = listaDeDadosSedimentares[num_colunasSedimentares * (i + 1) + 2];
             rochaSedimentar.familia = listaDeDadosSedimentares[num_colunasSedimentares * (i + 1) + 3];
             rochaSedimentar.sedimentosOriginarios = listaDeDadosSedimentares[num_colunasSedimentares * (i + 1) + 4];
