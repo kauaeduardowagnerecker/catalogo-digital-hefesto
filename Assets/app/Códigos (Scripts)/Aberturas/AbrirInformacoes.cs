@@ -281,7 +281,7 @@ public class AbrirInformacoes : MonoBehaviour
                 textos[22].text = metamorfica.museuhe;
                 textos[24].text = metamorfica.uspgeociencias;
                 textos[26].text = metamorfica.museuUnesp;
-                textos[28].text = metamorfica.outro;
+                textos[28].text = metamorfica.outro; //31?
 
                 for (int i = 22; i <= 28; i = i + 2)
                 {
@@ -324,7 +324,7 @@ public class AbrirInformacoes : MonoBehaviour
 
         float distance = Math.Abs(top - bottom);
 
-        contentRect.sizeDelta = new Vector2(contentRect.sizeDelta.x, distance - 350);
+        contentRect.sizeDelta = new Vector2(contentRect.sizeDelta.x, distance - 100);
 
     }
 
