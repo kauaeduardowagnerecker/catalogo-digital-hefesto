@@ -1,6 +1,6 @@
 # Privacy Policy
 
-**Last updated: [Date]**
+**Last updated: 09/03/2024**
 
 ## 1. Introduction
 
@@ -16,7 +16,7 @@ We want to assure you that **Coleção Geológica Digital** does not collect, st
 
 While we do not collect any user data, please be aware that Google, as the platform provider, may collect certain information for its own purposes. This includes data such as your device information, app usage statistics, and other details as outlined in Google's Privacy Policy.
 
-You can review Google's Privacy Policy here: [Google Privacy Policy Link].
+You can review Google's Privacy Policy here: https://policies.google.com/privacy?hl=en-US.
 
 ## 4. Changes to This Privacy Policy
 
